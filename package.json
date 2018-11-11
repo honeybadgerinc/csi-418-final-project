@@ -1,0 +1,25 @@
+{
+  "name": "csi-418-final-project",
+  "version": "1.0.0",
+  "description": "csi 418 final project",
+  "main": "init.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "puppeteer": "^1.10.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node init.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honeybadgerinc/csi-418-final-project.git"
+  },
+  "author": "Lucas Henry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/honeybadgerinc/csi-418-final-project/issues"
+  },
+  "homepage": "https://github.com/honeybadgerinc/csi-418-final-project#readme"
+}
