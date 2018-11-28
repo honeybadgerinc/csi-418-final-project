@@ -72,11 +72,11 @@ th, td{
         <p1>
 
             <h1>Welcome!</h1>
-            <h2>Below choose to enter a ticket symbol* or date to see a company's financial related articles.</h2>
+            <h2>Below choose to enter a ticket symbol* or date to see a company's financial related articles from a company.</h2>
             <form>
                 <!--Put where the search will be heading-->
                 <p6>Please pick choose one:</p6>        
-        <label for="symbol">Symbol</label><input type="radio" name="symbol" id="symbol" value="symbol" onclick="object1()">
+        <label for="ticket">Ticket Symbol </label><input type="radio" name="ticket" id="ticket" value="ticket" onclick="object1()">
         &nbsp; <label for="date">Date</label><input type="radio" name="date" id="date" value="date" onclick="object2()">
         
         
@@ -127,20 +127,28 @@ th, td{
     function downloadCsv(csv, filename) {
         var csvFile;
         var downloadLink;
+
     csvFile = new Blob([csv], {type: "text/csv"});
+
     // dowbload link for file
     downloadLink = document.createElement("a");
+
     //filename
     downloadLink.download = filename;
+
     // link to file
     downloadLink.href = window.URL.createObjectURL(csvFile);
+
     // making sure link is not displayed
     downloadLink.style.display = "none";
+
     //linking to download/body
     document.body.appendChild(downloadLink);
+
     //onclick
     downloadLink.click();
 }
+
 function exportTableToCsv(filename) {
     var csv = [];
     var rows = document.querySelectorAll("table tr");
@@ -156,6 +164,8 @@ function exportTableToCsv(filename) {
 //downloads the csv file
     downloadCsv(csv.join("\n"), filename);
 }
+
+
 </script>
         
         <br><br>
@@ -186,7 +196,7 @@ function exportTableToCsv(filename) {
         </tr>
         </table>
         
-        <div class="fixed2"> &nbsp;&nbsp;<button onclick="exportTableToCsv('ticketarticle.csv')"> Export </button></div>
+        <div class="fixed2"> &nbsp;&nbsp;<button onclick="exportTableToCsv('tickerarticle.csv')"> Export </button></div>
         
 </body>
 <!--Dont know if we need the below but thought it might be good to have-->
@@ -197,5 +207,4 @@ function exportTableToCsv(filename) {
 </p2>
 </div>
 
-</html>
 </html>
