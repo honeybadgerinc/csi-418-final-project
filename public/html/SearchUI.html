@@ -33,6 +33,30 @@ text-align: left;
 p3 {
 text-align: left;
 }
+div.fixed2{
+	position: fixed;
+	width: 100%;
+	bottom: 110px;
+	
+}
+button{
+cursor:pointer;
+}
+table{
+font-family: helvetica;
+border-collapse: collapse;
+width: 75%;
+margin-left: 285px;
+}
+th{
+background-color: rgb(0, 125, 210);
+color: rgb(255, 255, 255);
+}
+th, td{
+	padding: 5px;
+	text-align: center;
+	border: 1px solid;
+}
 </style>
 </head>
 
@@ -52,15 +76,126 @@ text-align: left;
                 articles from a company.</h2>
             <form>
                 <!--Put where the search will be heading-->
-
-                Enter company's symbol: <input type="text" name="symbol" pattern=[A-Za-z] placeholder="AAPL, MSFT, AMZN, etc."><br><br>
-                Enter date: <input type="date" name="date" min="1950-01-01" max="2018-12-31"><br><br>
-                &nbsp;&nbsp;<input type="submit" value="Search">
+				<p6>Please pick either one:</p6>		
+		<label for="ticker">Ticker</label><input type="radio" name="ticker" id="ticker" value="ticker" onclick="object1()">
+		&nbsp; <label for="date">Date</label><input type="radio" name="date" id="date" value="date" onclick="object2()">
+		
+		
+		<br><input type="text" name="symbol" id="symbol" style= 'visibility: hidden' placeholder="AAPL, MSFT, AMZN, etc.">
+		<input type="date" name="date" value="date" id="newdate" style= 'visibility: hidden'  min="1950-01-01" max="2018-12-31">
+		
+		<br>
+		    <!--scripts to show input fields for symbol or date depending on selection-->
+		<script>
+		var node;
+		function object1(){
+			node = document.getElementById('symbol');
+			node.style.visibility = 'visible';
+		}
+		</script>
+		<script>
+		var node;
+		function object2(){
+		node = document.getElementById('newdate');
+		node.style.visibility = 'visible';
+		
+		}
+		</script>
+		
+		<!------------------------------------------------------------------------------------------->
+		    
+		<br><br>	
+			  &nbsp;&nbsp;<input type="submit" value="Search">
                 <!--Need action-->
-                &nbsp;&nbsp;<input type="reset" value="Clear">
-		&nbsp;&nbsp;<input type="submit" value="Export">
-		&nbsp;&nbsp;<input type="submit" value="Scrape"><br>
+                
+				&nbsp;&nbsp;<input type="submit" value= "Scrape" id="scrape" action=""><br>
+				<br><br>
+				&nbsp;&nbsp;<button onclick="document.getElementById('symbol').value=">Clear</button>
+		
+		<script>
+		var node;
+		
+		function object3(){
+		node = document.getElementById('export');
+		node.style.visibility = 'visible';
+		
+		}
+		</script>
+	<!--script for csv file download/export-->
+		<script>
+	function downloadCsv(csv, filename) {
+		var csvFile;
+		var downloadLink;
 
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // dowbload link for file
+    downloadLink = document.createElement("a");
+
+    //filename
+    downloadLink.download = filename;
+
+    // link to file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // making sure link is not displayed
+    downloadLink.style.display = "none";
+
+    //linking to download/body
+    document.body.appendChild(downloadLink);
+
+    //onclick
+    downloadLink.click();
+}
+
+function exportTableToCsv(filename) {
+	var csv = [];
+	var rows = document.querySelectorAll("table tr");
+	
+    for (var i = 0; i < rows.length; i++) {
+		var row = [], cols = rows[i].querySelectorAll("td, th");
+		
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+        
+		csv.push(row.join(","));		
+	}
+//downloads the csv file
+    downloadCsv(csv.join("\n"), filename);
+}
+</script>
+		
+		<br><br>
+		<table>
+		<tr>
+		<th>Company Name</th>
+		<th>Ticker Symbol</th>
+		<th>Article Date</th>
+		<th>Article Contents</th>
+		</tr>
+		<tr>
+		
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		</table>
+		    
+		<!--Exports to a csv file named tickerarticle.csv-->
+		<div class="fixed2"> &nbsp;&nbsp;<button onclick="exportTableToCsv('tickerarticle.csv')"> Export </button></div>
+		
 </body>
 <!--Dont know if we need the below but thought it might be good to have-->
 <p2>
