@@ -112,7 +112,18 @@ th, td{
                 &nbsp;&nbsp;<input type="submit" value= "Scrape" id="scrape" action=""><br>
                 <br><br>
                 &nbsp;&nbsp;<button onclick="document.getElementById('symbol').value=">Clear</button>
-        
+        <body>
+
+        <p>Click the button to print the current page.</p>
+        <button onclick="myFunction()">Print this page</button>
+
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
+
+</body>
         <script>
         var node;
         
@@ -123,7 +134,7 @@ th, td{
         }
         
         </script>
-        <script> //ask user where they want to save file and table needs a scroll bar
+        <script>
     function downloadCsv(csv, filename) {
         var csvFile;
         var downloadLink;
@@ -172,7 +183,7 @@ function exportTableToCsv(filename) {
         <table>
         <tr>
         <th>Company Name</th>
-        <th>Ticket Symbol</th>
+        <th>Ticker Symbol</th>
         <th>Article Date</th>
         <th>Article Contents</th>
         </tr>
