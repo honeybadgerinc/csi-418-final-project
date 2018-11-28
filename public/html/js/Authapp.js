@@ -55,9 +55,6 @@
 		if(firebaseUser)
 		{
 			window.location.href = 'SearchUI.html';
-		} else
-		{
-			alert('not logged in');	
 		}
 	});
 	
