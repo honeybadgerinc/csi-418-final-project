@@ -16,7 +16,6 @@
 	const txtPass = document.getElementById('password');
 	const btnSignIn = document.getElementById('btnSignIn');
 	const btnSignUp = document.getElementById('btnSignUp');
-	const btnSignOut = document.getElementById('btnSignOut');
 	
 	btnSignIn.addEventListener('click', e => {
 		//Get Email and Pass
@@ -40,7 +39,7 @@
 			}
 		});
 	});
-	
+
 	btnSignUp.addEventListener('click', e => {
 		//Get Email and Pass
 		const email = txtEmail.value;
@@ -48,13 +47,14 @@
 		const auth = firebase.auth();
 		
 		const promise = auth.createUserWithEmailAndPassword(email, pass);
+		
 		promise.catch(e => console.log(e.message));
 	});
 	
 	firebase.auth().onAuthStateChanged(firebaseUser => {
 		if(firebaseUser)
 		{
-			window.location.href = 'index.html';
+			window.location.href = 'SearchUI.html';
 		} else
 		{
 			alert('not logged in');	

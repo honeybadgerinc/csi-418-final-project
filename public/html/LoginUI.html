@@ -26,6 +26,7 @@
 	
 	<!--Connects to firebase-->
 	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-auth.js"></script>
 </head>
 
 <body>
@@ -37,8 +38,8 @@
         <!--Needs to be fixed for logins wanted, dont know what we want the fixed logins to be as a team-->
         Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" id="email" placeholder="Email" name="Email"><br>
         Password: <input type="password" placeholder="Password" id="password" name="Password"><br><br>
-        &nbsp;&nbsp;&nbsp;<input type="submit" value="Submit">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
+        <button id="btnSignIn"> Log in </button><br/>
+        <button id="btnSignUp"> Sign up </button><br/>
     </form>
     <!--Dont know if we want to include this in the search part also or not at all-->
     <div class="fixed"><strong>Jumping Jack Jacks</strong><br>Joseph Miklos, Brittany Abrahams, Lucas Henry, Kiana
