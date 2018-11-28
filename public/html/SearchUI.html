@@ -127,28 +127,20 @@ th, td{
     function downloadCsv(csv, filename) {
         var csvFile;
         var downloadLink;
-
     csvFile = new Blob([csv], {type: "text/csv"});
-
     // dowbload link for file
     downloadLink = document.createElement("a");
-
     //filename
     downloadLink.download = filename;
-
     // link to file
     downloadLink.href = window.URL.createObjectURL(csvFile);
-
     // making sure link is not displayed
     downloadLink.style.display = "none";
-
     //linking to download/body
     document.body.appendChild(downloadLink);
-
     //onclick
     downloadLink.click();
 }
-
 function exportTableToCsv(filename) {
     var csv = [];
     var rows = document.querySelectorAll("table tr");
@@ -164,8 +156,6 @@ function exportTableToCsv(filename) {
 //downloads the csv file
     downloadCsv(csv.join("\n"), filename);
 }
-
-
 </script>
         
         <br><br>
