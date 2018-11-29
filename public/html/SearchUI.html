@@ -33,6 +33,10 @@
         p3 {
             text-align: left;
         }
+	    p4{
+	font-size: 12px;
+	}
+
         div.fixed2{
             position: fixed;
             width: 100%;
@@ -76,8 +80,9 @@
             <h1>Welcome!</h1>
             <h2>Below choose to enter a stock symbol* or date to see a company's financial related articles from a company.</h2>
             <form>
+	    <p4>(Please select one then press the Search button)</p4><br>
                 <!--Put where the search will be heading-->
-                <p6>Please pick choose one:</p6>        
+                <p6>Please choose one:</p6>        
         <label for="stock">Stock Symbol </label><input type="radio" name="stock" id="stock" value="stock" onclick="object1()">
         &nbsp; <label for="date">Date</label><input type="radio" name="date" id="date" value="date" onclick="object2()">
         
@@ -167,19 +172,55 @@ function exportTableToCsv(filename) {
 //downloads the csv file
     downloadCsv(csv.join("\n"), filename);
 }
-// print function
-function myFunction() {
-    window.print(); //move table on a new screen and print it
-}
+
 
 </script>
-        
-     <!--script for creating a table-->
+        <!--for now, this is a premade table to test. will add script to make talbe once done-->
+     	<br><br>
+		<table border="1" id="print">
+		<tr>
+		<th>Company Name</th>
+		<th>Ticker Symbol</th>
+		<th>Article Date</th>
+		<th>Article Contents</th>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		<tr>
+		<!--Needs import locations-->
+		</tr>
+		</table>
 
-        
-        <div class="fixed2"> &nbsp;&nbsp;<button onclick="exportTableToCsv('stockarticle.csv')"> Export </button>
-  &nbsp;&nbsp;<button onclick="myFunction()">Print </button></div>
-        
+      <!-- all the breaks are because the div was not working correctly with export button--> 
+			
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+		<button onclick="exportTableToCsv('tickerarticle.csv')">Export to CSV</button>
+		
+			<!--script to make the print key work-->
+		<script>
+		function printData()
+		{
+		var divToPrint=document.getElementById("print");
+		newWin= window.open("");
+		newWin.document.write(divToPrint.outerHTML);
+		newWin.print();
+		newWin.close();
+		}
+		</script>
+		
+		<div class= "fixed3"> <button onclick = "printData()"> Print Table</button></div>
 </body>
 <!--Dont know if we need the below but thought it might be good to have-->
 <p2>
