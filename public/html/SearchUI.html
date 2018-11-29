@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <style>
         h1 {
@@ -33,9 +32,9 @@
         p3 {
             text-align: left;
         }
-	    p4{
-	font-size: 12px;
-	}
+        p4{
+            font-size: 12px;
+        }
 
         div.fixed2{
             position: fixed;
@@ -43,11 +42,11 @@
             bottom: 110px;
             
         }
-	    div.fixed3{
-	position: fixed;
-	width: 120%;
-	bottom: 106px;
-	}
+        div.fixed3{
+            position: fixed;
+            width: 120%;
+            bottom: 106px;
+        }
         button{
             cursor:pointer;
         }
@@ -69,12 +68,11 @@
     </style>
 
     <!--Connects to firebase-->
-	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-auth.js"></script>
 </head>
 
 <body>
-    <!--Script for the go back button(logout) but may need to be changed-->
     <p1>
         <div class="fixed">
             <button id="btnLogOut">Logout</button>
@@ -85,7 +83,7 @@
             <h1>Welcome!</h1>
             <h2>Below choose to enter a stock symbol* or date to see a company's financial related articles from a company.</h2>
             <form>
-	    <p4>(Please select one then press the Search button)</p4><br>
+        <p4>(Please select one then press the Search button)</p4><br>
                 <!--Put where the search will be heading-->
                 <p6>Please choose one:</p6>        
         <label for="stock">Stock Symbol </label><input type="radio" name="stock" id="stock" value="stock" onclick="object1()">
@@ -96,148 +94,137 @@
         <input type="date" name="date" value="date" id="newdate" style= 'visibility: hidden'  min="1950-01-01" max="2018-12-31">
         
         <br>
-        <script>
-        var node;
-        function object1(){
-            node = document.getElementById('symbol');
-            node.style.visibility = 'visible';
-        }
-        </script>
-        <script>
-        var node;
-        function object2(){
-        node = document.getElementById('newdate');
-        node.style.visibility = 'visible';
-        
-        }
-        </script>
-        
-        <!------------------------------------>
         
         
         
         <!--<input type="text" name="symbol" pattern=[A-Za-z] placeholder="AAPL, MSFT, AMZN, etc.">-->
-         <br>
-              &nbsp;&nbsp;<button type="button" onclick="//will run a function">Search</button>
+        <br>
+        &nbsp;&nbsp;<button type="button" onclick="//will run a function">Search</button>
                 
-                &nbsp;&nbsp;<button type="button" onclick="//will run a function">Scrape</button>
+        &nbsp;&nbsp;<button type="button" onclick="//will run a function">Scrape</button>
  
-                <br>
-                <br>
-                &nbsp;&nbsp;<button onclick="document.getElementById('symbol').value=" " >Clear</button>
+        <br>
+        <br>                
+        &nbsp;&nbsp;<button onclick="document.getElementById('symbol').value=" " >Clear</button>
         
-        <script>
-        var node;
-        
-        function object3(){
-        node = document.getElementById('export');
-        node.style.visibility = 'visible';
-        
-        }
-        
-        </script>
-        <script>
-    function downloadCsv(csv, filename) {
-        var csvFile;
-        var downloadLink;
 
-    csvFile = new Blob([csv], {type: "text/csv"});
-
-    // download link for file
-    downloadLink = document.createElement("a");
-
-    //filename
-    downloadLink.download = filename;
-
-    // link to file
-    downloadLink.href = window.URL.createObjectURL(csvFile);
-
-    // making sure link is not displayed
-    downloadLink.style.display = "none";
-
-    //linking to download/body
-    document.body.appendChild(downloadLink);
-
-    //onclick
-    downloadLink.click();
-}
-
-function exportTableToCsv(filename) {
-    var csv = [];
-    var rows = document.querySelectorAll("table tr");
-    
-    for (var i = 0; i < rows.length; i++) {
-        var row = [], cols = rows[i].querySelectorAll("td, th");
-        
-        for (var j = 0; j < cols.length; j++) 
-            row.push(cols[j].innerText);
-        
-        csv.push(row.join(","));        
-    }
-//downloads the csv file
-    downloadCsv(csv.join("\n"), filename);
-}
-
-
-</script>
-	<!--
         <!--for now, this is a premade table to test. will add script to make talbe once done-->
-     	<br><br>
-		<table border="1" id="print">
-		<tr>
-		<th>Symbol</th>
-		<th>Headline</th>
-		<th>Date</th>
-		<th>Text</th>
-		</tr>
-		<tr>
-		</tr>
-		<tr>
-		<!--Needs import locations-->
-		</tr>
-		<tr>
-		<!--Needs import locations-->
-		</tr>
-		<tr>
-		<!--Needs import locations-->
-		</tr>
-		<tr>
-		<!--Needs import locations-->
-		</tr>
-		<tr>
-		<!--Needs import locations-->
-		</tr>
-		</table>
-			-->
+        <br><br>
+        <table border="1" id="print">
+        <tr>
+        <th>Symbol</th>
+        <th>Headline</th>
+        <th>Date</th>
+        <th>Text</th>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        <!--Needs import locations-->
+        </tr>
+        <tr>
+        <!--Needs import locations-->
+        </tr>
+        <tr>
+        <!--Needs import locations-->
+        </tr>
+        <tr>
+        <!--Needs import locations-->
+        </tr>
+        <tr>
+        <!--Needs import locations-->
+        </tr>
+        </table>
 
       <!-- all the breaks are because the div was not working correctly with export button--> 
-			
+            
      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
-		<button onclick="exportTableToCsv('tickerarticle.csv')">Export to CSV</button>
-		<!--
-			<!--script to make the print key work-->
-		<script>
-		function printData()
-		{
-		var divToPrint=document.getElementById("print");
-		newWin= window.open("");
-		newWin.document.write(divToPrint.outerHTML);
-		newWin.print();
-		newWin.close();
-		}
-		</script>
-		
-		<div class= "fixed3"> <button onclick = "printData()"> Print Table</button></div>
-			-->
-			
-</body>
-<!--Dont know if we need the below but thought it might be good to have-->
-<p2>
-    <div class="fixed1">* - A stock symbol is an arrangement of characters (usually letters) representing a particular
-        security listed on an exchange or otherwise traded publicly. Some common examples are AAPL for Apple, GOOGL for
-        Google and GE for General Electric.
-</p2>
-</div>
+        <button onclick="exportTableToCsv('tickerarticle.csv')">Export to CSV</button>
+        
+        <div class= "fixed3"> <button onclick = "printData()"> Print Table</button></div>
+        
+        <div class="fixed1">
+            <p2>
+                * - A stock symbol is an arrangement of characters (usually letters) representing a particular
+                security listed on an exchange or otherwise traded publicly. Some common examples are AAPL for Apple, GOOGL for
+                Google and GE for General Electric.
+            </p2>
+        </div>
 
+        <script type="text/javascript" src="js/Authapp.js"></script>
+        <script>
+            var node;
+            function object1(){
+                node = document.getElementById('symbol');
+                node.style.visibility = 'visible';
+            }
+
+            var node;
+            function object2(){
+            node = document.getElementById('newdate');
+            node.style.visibility = 'visible';
+            
+            }
+
+             var node;
+        
+            function object3(){
+            node = document.getElementById('export');
+            node.style.visibility = 'visible';
+            
+            }
+
+            function downloadCsv(csv, filename) {
+                var csvFile;
+                var downloadLink;
+
+                csvFile = new Blob([csv], {type: "text/csv"});
+
+                // download link for file
+                downloadLink = document.createElement("a");
+
+                //filename
+                downloadLink.download = filename;
+
+                // link to file
+                downloadLink.href = window.URL.createObjectURL(csvFile);
+
+                // making sure link is not displayed
+                downloadLink.style.display = "none";
+
+                //linking to download/body
+                document.body.appendChild(downloadLink);
+
+                //onclick
+                downloadLink.click();
+            }
+
+            function exportTableToCsv(filename) {
+                var csv = [];
+                var rows = document.querySelectorAll("table tr");
+                
+                for (var i = 0; i < rows.length; i++) {
+                    var row = [], cols = rows[i].querySelectorAll("td, th");
+                    
+                    for (var j = 0; j < cols.length; j++) 
+                        row.push(cols[j].innerText);
+                    
+                    csv.push(row.join(","));        
+                }
+                //downloads the csv file
+                downloadCsv(csv.join("\n"), filename);
+            }
+
+            function printData() {
+                var divToPrint=document.getElementById("print");
+                newWin= window.open("");
+                newWin.document.write(divToPrint.outerHTML);
+                newWin.print();
+                newWin.close();
+            }
+        </script>
+        
+        <!------------------------------------>
+</body>
 </html>
-</html>
+
