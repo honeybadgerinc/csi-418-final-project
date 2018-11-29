@@ -1,5 +1,8 @@
 language: node_js
 
+notifications:
+  slack: csi418:o1guwUyNJ7jIlhpHB1OXUMH4
+
 node_js:
   - "10.14.0"
 
