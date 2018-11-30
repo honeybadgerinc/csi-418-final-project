@@ -8,8 +8,8 @@
 		projectId: "finalproject-37ce0",
 		storageBucket: "finalproject-37ce0.appspot.com",
 		messagingSenderId: "260652345298"
-	  };
-	  firebase.initializeApp(config);
+	};
+	firebase.initializeApp(config);
 	
 	//Get elements
 	const txtEmail = document.getElementById('email');
@@ -55,7 +55,10 @@
 	btnSignOut.addEventListener('click', e => {
 		//Get Email and Pass
 		const auth = firebase.auth();
-		auth.signOut();
+		
+		const promise = auth.signOut();
+		
+		promise.catch(e => console.log(e.message));
 	});
 	
 	firebase.auth().onAuthStateChanged(firebaseUser => {
