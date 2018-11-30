@@ -18,46 +18,50 @@
 	const btnSignUp = document.getElementById('btnSignUp');
 	const btnSignOut = document.getElementById('btnLogOut');
 	
-	btnSignIn.addEventListener('click', function(){
+	if(btnSignIn){
+		btnSignIn.addEventListener('click', function(){
 
-		console.log('In SignIn');
-
-		//Get Email and Pass
-		const email = txtEmail.value;
-		const pass = txtPass.value;
-		
-		const promise = auth.signInWithEmailAndPassword(email, pass);
-		
-		promise.catch(function(error)
-		{
-			var errorCode = error.code;
-			var errorMessage = error.message;
+			console.log('In SignIn');
+	
+			//Get Email and Pass
+			const email = txtEmail.value;
+			const pass = txtPass.value;
 			
-			console.log(errorCode);
-			console.log(errorMessage);
+			const promise = auth.signInWithEmailAndPassword(email, pass);
 			
-			if(errorCode =='auth/wrong-password')
+			promise.catch(function(error)
 			{
-				alert('There seems to be something wrong with your email or password');
-			}
-		}).then(user => window.location.href = 'SearchUI.html');
-	});
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				
+				console.log(errorCode);
+				console.log(errorMessage);
+				
+				if(errorCode =='auth/wrong-password')
+				{
+					alert('There seems to be something wrong with your email or password');
+				}
+			}).then(user => window.location.href = 'SearchUI.html');
+		});
+	}
 
-	btnSignUp.addEventListener('click', function() {
+	if (btnSignUp){
+		btnSignUp.addEventListener('click', function() {
 
-		console.log('In SignUP');
+			console.log('In SignUP');
 
-		//Get Email and Pass
-		const email = txtEmail.value;
-		const pass = txtPass.value;
-		const auth = firebase.auth();
-		
-		const promise = auth.createUserWithEmailAndPassword(email, pass);
-		
-		promise.catch(e => console.log(e.message));
-		promise.then(user => window.location.href = 'SearchUI.html');
-		
-	});
+			//Get Email and Pass
+			const email = txtEmail.value;
+			const pass = txtPass.value;
+			const auth = firebase.auth();
+			
+			const promise = auth.createUserWithEmailAndPassword(email, pass);
+			
+			promise.catch(e => console.log(e.message));
+			promise.then(user => window.location.href = 'SearchUI.html');
+			
+		});
+}	
 
 	if (btnSignOut){
 		btnSignOut.addEventListener('click', function() {
