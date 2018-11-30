@@ -26,6 +26,7 @@
 			//Get Email and Pass
 			const email = txtEmail.value;
 			const pass = txtPass.value;
+			const auth = firebase.auth();
 			
 			const promise = auth.signInWithEmailAndPassword(email, pass);
 			
