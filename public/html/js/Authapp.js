@@ -8,8 +8,8 @@
 		projectId: "finalproject-37ce0",
 		storageBucket: "finalproject-37ce0.appspot.com",
 		messagingSenderId: "260652345298"
-	};
-	firebase.initializeApp(config);
+	  };
+	  firebase.initializeApp(config);
 	
 	//Get elements
 	const txtEmail = document.getElementById('email');
