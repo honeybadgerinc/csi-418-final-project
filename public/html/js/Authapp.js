@@ -61,7 +61,7 @@
 			promise.then(user => window.location.href = 'SearchUI.html');
 			
 		});
-}	
+	}	
 
 	if (btnSignOut){
 		btnSignOut.addEventListener('click', function() {
@@ -82,9 +82,7 @@
 		if(firebaseUser)
 		{
 			window.location.href = 'SearchUI.html';
-		} else {
-			window.location.href = 'LoginUI.html';
-		}
+		} 
 	});
 	
 }());
