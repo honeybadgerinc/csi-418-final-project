@@ -65,6 +65,9 @@
 
 	if (btnSignOut){
 		btnSignOut.addEventListener('click', function() {
+
+			console.log('In SignOUT');
+
 			//Get Email and Pass
 			const auth = firebase.auth();
 			
