@@ -7,6 +7,7 @@
     "apify": "^0.8.18",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
+    "firebase": "^5.6.0",
     "modern-random-ua": "^1.0.3",
     "puppeteer": "^1.10.0",
     "request-promise": "^4.2.2"
