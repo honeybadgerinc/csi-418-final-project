@@ -40,7 +40,7 @@
 			{
 				alert('There seems to be something wrong with your email or password');
 			}
-		});
+		}).then(user => window.location.href = 'SearchUI.html');
 	});
 
 	btnSignUp.addEventListener('click', function() {
@@ -55,6 +55,8 @@
 		const promise = auth.createUserWithEmailAndPassword(email, pass);
 		
 		promise.catch(e => console.log(e.message));
+		promise.then(user => window.location.href = 'SearchUI.html');
+		
 	});
 
 	if (btnSignOut){
@@ -65,6 +67,7 @@
 			const promise = auth.signOut();
 			
 			promise.catch(e => console.log(e.message));
+
 		});
 	}
 
