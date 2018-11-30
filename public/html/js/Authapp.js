@@ -19,6 +19,9 @@
 	const btnSignOut = document.getElementById('btnLogOut');
 	
 	btnSignIn.addEventListener('click', e => {
+
+		console.log('In SignIn');
+
 		//Get Email and Pass
 		const email = txtEmail.value;
 		const pass = txtPass.value;
@@ -42,6 +45,9 @@
 	});
 
 	btnSignUp.addEventListener('click', e => {
+
+		console.log('In SignUP');
+
 		//Get Email and Pass
 		const email = txtEmail.value;
 		const pass = txtPass.value;
@@ -62,6 +68,9 @@
 	});
 	
 	firebase.auth().onAuthStateChanged(firebaseUser => {
+
+		console.log('In AuthChanged');
+
 		if(firebaseUser)
 		{
 			window.location.href = 'SearchUI.html';
