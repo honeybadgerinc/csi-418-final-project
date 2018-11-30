@@ -18,7 +18,7 @@
 	const btnSignUp = document.getElementById('btnSignUp');
 	const btnSignOut = document.getElementById('btnLogOut');
 	
-	btnSignIn.addEventListener('click', e => {
+	btnSignIn.addEventListener('click', function(){
 
 		console.log('In SignIn');
 
@@ -44,7 +44,7 @@
 		});
 	});
 
-	btnSignUp.addEventListener('click', e => {
+	btnSignUp.addEventListener('click', function() {
 
 		console.log('In SignUP');
 
@@ -58,7 +58,7 @@
 		promise.catch(e => console.log(e.message));
 	});
 
-	btnSignOut.addEventListener('click', e => {
+	btnSignOut.addEventListener('click', function() {
 		//Get Email and Pass
 		const auth = firebase.auth();
 		
