@@ -25,7 +25,6 @@
 		//Get Email and Pass
 		const email = txtEmail.value;
 		const pass = txtPass.value;
-		const auth = firebase.auth();
 		
 		const promise = auth.signInWithEmailAndPassword(email, pass);
 		
@@ -58,15 +57,17 @@
 		promise.catch(e => console.log(e.message));
 	});
 
-	btnSignOut.addEventListener('click', function() {
-		//Get Email and Pass
-		const auth = firebase.auth();
-		
-		const promise = auth.signOut();
-		
-		promise.catch(e => console.log(e.message));
-	});
-	
+	if (btnSignOut){
+		btnSignOut.addEventListener('click', function() {
+			//Get Email and Pass
+			const auth = firebase.auth();
+			
+			const promise = auth.signOut();
+			
+			promise.catch(e => console.log(e.message));
+		});
+	}
+
 	firebase.auth().onAuthStateChanged(firebaseUser => {
 
 		console.log('In AuthChanged');
