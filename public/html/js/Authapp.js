@@ -16,7 +16,6 @@
 	const txtPass = document.getElementById('password');
 	const btnSignIn = document.getElementById('btnSignIn');
 	const btnSignUp = document.getElementById('btnSignUp');
-	const btnSignOut = document.getElementById('btnLogOut');
 	
 	if(btnSignIn){
 		btnSignIn.addEventListener('click', function(){
@@ -29,20 +28,7 @@
 			const auth = firebase.auth();
 			
 			const promise = auth.signInWithEmailAndPassword(email, pass);
-			
-			promise.catch(function(error)
-			{
-				var errorCode = error.code;
-				var errorMessage = error.message;
-				
-				console.log(errorCode);
-				console.log(errorMessage);
-				
-				if(errorCode =='auth/wrong-password')
-				{
-					alert('There seems to be something wrong with your email or password');
-				}
-			}).then(user => window.location.href = 'SearchUI.html');
+			promise.catch(e => alert(e.message));
 		});
 	}
 
@@ -57,27 +43,9 @@
 			const auth = firebase.auth();
 			
 			const promise = auth.createUserWithEmailAndPassword(email, pass);
-			
-			promise.catch(e => console.log(e.message));
-			promise.then(user => window.location.href = 'SearchUI.html');
-			
+			promise.catch(e => alert(e.message));
 		});
 	}	
-
-	if (btnSignOut){
-		btnSignOut.addEventListener('click', function() {
-
-			console.log('In SignOUT');
-
-			//Get Email and Pass
-			const auth = firebase.auth();
-			
-			const promise = auth.signOut();
-			
-			promise.catch(e => console.log(e.message));
-
-		});
-	}
 
 	firebase.auth().onAuthStateChanged(firebaseUser => {
 
