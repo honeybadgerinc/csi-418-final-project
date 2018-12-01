@@ -1,15 +1,8 @@
 let axios = require('axios');
 let cheerio = require('cheerio');
-let firebase = require('firebase');
+// let firebase = require('firebase');
 
-//Initialize firebase
-var config = {
-    apiKey: "AIzaSyA2pM55uTodnnX1wHcKBcYrQQByDSup-rU",
-    authDomain: "finalproject-37ce0.firebaseapp.com",
-    databaseURL: "https://finalproject-37ce0.firebaseio.com",
-    storageBucket: "finalproject-37ce0.appspot.com",
-};
-firebase.initializeApp(config);
+import firebase from './public/html/js/firebase_init'
 
 const database = firebase.database();
 
