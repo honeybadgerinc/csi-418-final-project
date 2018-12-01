@@ -81,23 +81,24 @@
             <h1>Welcome!</h1>
             <h2>Below choose to enter a stock symbol* or date to see a company's financial related articles from a company.</h2>
             <form>
-        <p4>(Please select one then press the Search button)</p4><br>
-                <!--Put where the search will be heading-->
-                <p6>Please choose one:</p6>        
-        <label for="stock">Stock Symbol </label><input type="radio" name="stock" id="stock" value="stock" onclick="object1()">
-        &nbsp; <label for="date">Date</label><input type="radio" name="date" id="date" value="date" onclick="object2()">
-        
-        
-        <br><input type="text" name="symbol" id="symbol" style= 'visibility: hidden' placeholder="AAPL, MSFT, AMZN, etc.">
-        <input type="date" name="date" value="date" id="newdate" style= 'visibility: hidden'  min="1950-01-01" max="2018-12-31">
-        
-        <br>
-        
+			
+                <!-- Changed to selection instead of using labels-->
+				<p6>Please select either one:</p6>
+				<select id="selection" onchange="myFunction()">
+				<option type="radio" value="empty"> </option>
+				<option type="radio" value="y">Ticker</option>
+				<option type="radio" value="z">Date</option>
+				</select>
+
+		<br><input type="text" name="symbol" id="symbol" style= 'visibility: hidden' placeholder="AAPL, MSFT, AMZN, etc.">
+		<input type="date" name="date" value="date" id="newdate" style= 'visibility: hidden'  min="1950-01-01" max="2018-12-31">
+		
+		<br>
         
         
         <!--<input type="text" name="symbol" pattern=[A-Za-z] placeholder="AAPL, MSFT, AMZN, etc.">-->
         <br>
-        &nbsp;&nbsp;<button id="btnSearch">Search</button>
+        &nbsp;&nbsp;<button id="btnSearch" onmouseover="object1()">Search</button>
                 
         &nbsp;&nbsp;<button id="btnScrape">Scrape</button>
  
@@ -136,10 +137,10 @@
 
       <!-- all the breaks are because the div was not working correctly with export button--> 
             
-     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
-        <button onclick="exportTableToCsv('tickerarticle.csv')">Export to CSV</button>
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+        <button onclick="exportTableToCsv('tickerarticle.csv')" id="exp" style='visibility:hidden'>Export to CSV</button>
         
-        <div class= "fixed3"> <button onclick = "printData()"> Print Table</button></div>
+        <div class= "fixed3"> <button onclick = "printData()" id="printtable" style="visbility:hidden"> Print Table</button></div>
         
         <div class="fixed1">
             <p2>
@@ -152,26 +153,29 @@
         <script type="text/javascript" src="js/SearchAuth.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
         <script>
-            var node;
+            function myFunction(){
+
+		    var x = document.getElementById("selection").value;
+		    if (x == "y")
+		{
+		    document.getElementById('symbol').style.visibility = 'visible';
+		    document.getElementById('newdate').style.visibility = 'hidden';
+		}
+		else if(x == "z")
+		{
+		    document.getElementById('newdate').style.visibility = 'visible';
+		    document.getElementById('symbol').style.visibility = 'hidden';
+		}
+		else{
+		    document.getElementById('symbol').style.visibility = 'hidden';
+		    document.getElementById('newdate').style.visibility = 'hidden';
+		}
+		}
+            
             function object1(){
-                node = document.getElementById('symbol');
-                node.style.visibility = 'visible';
-            }
-
-            var node;
-            function object2(){
-            node = document.getElementById('newdate');
-            node.style.visibility = 'visible';
-            
-            }
-
-             var node;
-        
-            function object3(){
-            node = document.getElementById('export');
-            node.style.visibility = 'visible';
-            
-            }
+		    document.getElementById('exp').style.visibility = "visible";
+		    document.getElementById('printtable').style.visibility = "visible";
+		    }
 
             function downloadCsv(csv, filename) {
                 var csvFile;
