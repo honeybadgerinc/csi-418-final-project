@@ -1,4 +1,4 @@
-import firebase from './public/html/js/firebase_init'
+import firebase from './public/html/js/firebase_init.js'
 
 // JavaScript Document
 (function() {	
