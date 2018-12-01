@@ -9,7 +9,10 @@ var config = {
     databaseURL: "https://finalproject-37ce0.firebaseio.com",
     storageBucket: "finalproject-37ce0.appspot.com",
 };
-firebase.initializeApp(config);
+
+export default !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
+
+// firebase.initializeApp(config);
 
 const database = firebase.database();
 

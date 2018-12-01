@@ -9,7 +9,7 @@
 		storageBucket: "finalproject-37ce0.appspot.com",
 		messagingSenderId: "260652345298"
 	};
-	export default !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
+	!firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
 
 // firebase.initializeApp(config);
 	
