@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/honeybadgerinc/csi-418-final-project/issues"
   },
+  "parserOptions": {
+      "sourceType": "module"
+  },
+
   "homepage": "https://github.com/honeybadgerinc/csi-418-final-project#readme"
 }
