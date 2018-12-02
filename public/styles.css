@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+p1 {
+    text-align: right;
+}
+body {
+    background-image: url("images/BGImage.jpeg");
+}
+form{
+    text-align: center;
+}
+div.fixed {
+    position: fixed;
+    width: 97%;
+}
+div.fixed1{
+    position: fixed;
+    width: 50%;
+    bottom: 20px;
+}
+p2 {
+    text-align: left;
+}
+p3 {
+    text-align: left;
+}
+        p4{
+    font-size: 12px;
+}
+
+div.fixed2{
+    position: fixed;
+    width: 100%;
+    bottom: 110px;
+    
+}
+div.fixed3{
+    position: fixed;
+    width: 120%;
+    bottom: 106px;
+}
+button{
+    cursor:pointer;
+}
+table{
+    font-family: helvetica;
+    border-collapse: collapse;
+    width: 75%;
+    margin-left: 285px;
+}
+th{
+    background-color: rgb(0, 125, 210);
+    color: rgb(255, 255, 255);
+}
+th, td{
+    padding: 5px;
+    text-align: center;
+    border: 1px solid;
+}

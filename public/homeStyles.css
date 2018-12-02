@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1 {
+    text-align: center;
+    color: blue;
+    }
+    .TestForm{
+        text-align: center;
+    }
+    body {
+        background-image: url("images/BGImage.jpeg");
+    }
+    div.fixed {
+        position: fixed;
+        width: 50%;
+        bottom: 10px;
+    } 
