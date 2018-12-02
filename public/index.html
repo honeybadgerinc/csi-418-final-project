@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    h1 {
+			text-align: center;
+			color: blue;
+			}
+			.TestForm{
+				text-align: center;
+			}
+			body {
+				background-image: url("images/BGImage.jpeg");
+			}
+			div.fixed {
+				position: fixed;
+				width: 50%;
+				bottom: 10px;
+			} 
+		</style>
+
+  <!--Connects to firebase-->
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+  <!-- Import and configure the Firebase SDK -->
+  <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+  <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+  <script src="/__/firebase/5.6.0/firebase-app.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
+  <script src="/__/firebase/init.js"></script>
+</head>
+
+<body>
+  <div class="TestForm">
+    <h1>Hello!</h1>
+    <p3>Please enter your login below</p3>
+    <br>
+    <br>
+    <!--Needs to be fixed for logins wanted, dont know what we want the fixed logins to be as a team-->
+    Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" id="email" placeholder="Email" name="Email"><br>
+    Password: <input type="password" placeholder="Password" id="password" name="Password"><br><br>
+
+    <button id="btnSignIn" onclick="signIn()"> Log in </button><br />
+    <button id="btnSignUp" onclick="signUp()"> Sign up </button><br />
+  </div>
+
+  <!--Dont know if we want to include this in the search part also or not at all-->
+  <div class="fixed"><strong>
+      Jumping Jack Jacks</strong><br>Joseph Miklos, Brittany Abrahams, Lucas Henry, Kiana
+    Pugh, Cameron Casanova, Malcolm James
+  </div>
+
+  <script>
+    window.onload = function () {
+      document.getElementById('btnSignIn').addEventListener('click', signIn, true);
+      document.getElementById('btnSignUp').addEventListener('click', signUp, true);
+    };
+    function signUp() {
+
+      console.log('In SignUP');
+      //Get elements
+      const txtEmail = document.getElementById('email');
+      const txtPass = document.getElementById('password');
+      //Get Email and Pass
+      const email = txtEmail.value;
+      const pass = txtPass.value;
+      const auth = firebase.auth();
+
+      const promise = auth.createUserWithEmailAndPassword(email, pass);
+      promise.catch(e => alert(e.message));
+    }
+    function signIn() {
+
+      //Get elements
+      const txtEmail = document.getElementById('email');
+      const txtPass = document.getElementById('password');
+      const btnSignIn = document.getElementById('btnSignIn');
+      const btnSignUp = document.getElementById('btnSignUp');
+
+      console.log('In SignIn');
+
+      //Get Email and Pass
+      const email = txtEmail.value;
+      const pass = txtPass.value;
+      const auth = firebase.auth();
+
+      const promise = auth.signInWithEmailAndPassword(email, pass);
+      promise.catch(e => alert(e.message));
+
+      firebase.auth().onAuthStateChanged(firebaseUser => {
+
+        console.log('In AuthChanged');
+
+        if (firebaseUser) {
+          window.location.href = './SearchUI.html';
+        }
+      });
+    };
+  </script>
+
+</body>
+
+</html>

@@ -63,3 +63,6 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+#node_modules in /functions
+functions/node_modules

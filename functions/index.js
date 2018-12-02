@@ -1,14 +1,32 @@
-let axios = require('axios');
-let cheerio = require('cheerio');
-// let firebase = require('firebase');
+const axios = require('axios');
+const cheerio = require('cheerio');
+const firebase_admin = require('firebase-admin');
+const functions = require('firebase-functions');
+const express = require('express');
+const app = express();
 
-import firebase from './public/html/js/firebase_init'
-
-const database = firebase.database();
-
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyA2pM55uTodnnX1wHcKBcYrQQByDSup-rU",
+    authDomain: "finalproject-37ce0.firebaseapp.com",
+    databaseURL: "https://finalproject-37ce0.firebaseio.com",
+    projectId: "finalproject-37ce0",
+    storageBucket: "finalproject-37ce0.appspot.com",
+    messagingSenderId: "260652345298"
+};
+if (!firebase_admin.apps.length) {
+    firebase_admin.initializeApp(config);
+}
+else {
+    firebase_admin.app();
+}
+const database = firebase_admin.database();
 //This code will look for all articles on the nasdaq options front page with "Notable" or "Noteworthy" in the title
-axios.get('https://www.nasdaq.com/options/')
-    .then((response) => {
+
+app.get('/scrape', (request, response) => {
+    console.log("scrape received");
+    var webscrapeTrimmed;
+    axios.get('https://www.nasdaq.com/options/').then((response) => {
         if (response.status == 200) {
             const html = response.data;
 
@@ -104,7 +122,7 @@ axios.get('https://www.nasdaq.com/options/')
 
 
                             //Here we trim down the array
-                            const webscrapeTrimmed = arrayFinal.filter(n => n != undefined)
+                            webscrapeTrimmed = arrayFinal.filter(n => n != undefined)
 
                             //Here we save the array to the programs output folder
                             //fs.writeFile('webscrape.json',
@@ -128,3 +146,6 @@ axios.get('https://www.nasdaq.com/options/')
             }
         }
     })
+    response.send(webscrapeTrimmed);
+})
+exports.app = functions.https.onRequest(app);

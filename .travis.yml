@@ -10,10 +10,11 @@ script:
   - echo "deploying!"
 
 install:
+  - cd functions/
   - npm install
-  - npm install --save firebase
-  - npm install -g browserify
-  - browserify public/html/js/*.js -o public/html/js/bundle.js
+  - npm install --save firebase-functions
+  - cd ..
+  - npm install
   - npm install -g firebase-tools
 
 after_success:
