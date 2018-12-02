@@ -1,0 +1,21 @@
+language: node_js
+
+notifications:
+  slack: csi418:o1guwUyNJ7jIlhpHB1OXUMH4
+
+node_js:
+  - "10.14.0"
+
+script:
+  - echo "deploying!"
+
+install:
+  - cd functions/
+  - npm install
+  - npm install --save firebase-functions
+  - cd ..
+  - npm install
+  - npm install -g firebase-tools
+
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
