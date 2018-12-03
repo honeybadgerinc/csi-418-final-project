@@ -23,7 +23,6 @@
 
         <h1>Welcome!</h1>
         <h2>Below choose to enter a stock symbol* or date to see a company's financial related articles from a company.</h2>
-        <form>
 
             <!-- Changed to selection instead of using labels-->
             <p6>Please select either one:</p6>
@@ -43,9 +42,7 @@
             <br>
             &nbsp;&nbsp;<button id="btnSearch" onmouseover="object1()">Search</button>
 
-            <form action="/scrape" method="GET">
-                <button value="scrape">Scrape</button>
-            </form>
+            <button id="btnScrape"onclick="scraper()">Scrape</button>
 
             <br>
             <br>

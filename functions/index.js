@@ -20,7 +20,7 @@ if (!firebase_admin.apps.length) {
 else {
     firebase_admin.app();
 }
-const database = firebase_admin.database();
+var database = firebase_admin.database();
 //This code will look for all articles on the nasdaq options front page with "Notable" or "Noteworthy" in the title
 
 app.get('/scrape', (request, response) => {
@@ -131,9 +131,7 @@ app.get('/scrape', (request, response) => {
 
                             try {
                                 const data = JSON.parse(webscrapeTrimmed);
-                                database.database().ref('users/' + userId).set({
-                                    json: data
-                                })
+                                database.database().ref('symbols/').set({data});
                             } catch (err) {
                                 console.error(err)
                             }

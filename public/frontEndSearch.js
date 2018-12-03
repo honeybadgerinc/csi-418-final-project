@@ -1,6 +1,18 @@
 window.onload = function () {
     document.getElementById('btnLogOut').addEventListener('click', signout, true);
+    document.getElementById('btnScrape').addEventListener('click', scraper, true);
 };
+
+function scraper() {
+    const Http = new XMLHttpRequest();
+    const url='https://finalproject-37ce0.firebaseapp.com/scrape';
+    Http.open("GET", url);
+    Http.send();
+
+    Http.onreadystatechange=(e)=>{
+        console.log(Http.responseText)
+    }
+}
 
 function signout() {
     //Get elements
