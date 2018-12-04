@@ -113,7 +113,7 @@ app.get('/scrape', (request, response) => {
                             //Finally we populate the array with the data
                             for (var i = 0; i < 3; i++) {
                                 arrayFinal[i] = {
-                                    headline: tempHeadline,
+                                    //headline: tempHeadline,
                                     symbols: symbols[i],
                                     articleText: symbolText[i],
                                     datetime: datetime
@@ -131,7 +131,27 @@ app.get('/scrape', (request, response) => {
 
                             try {
                                 const data = JSON.parse(webscrapeTrimmed);
-                                database.database().ref('symbols/').set({data});
+                                database.ref('Articles/').set(
+                                    {
+                                        tempHeadline: {
+                                            num: {
+                                                n: "1",
+                                                symbol: data[0].symbols,
+                                                text: data[0].articleText
+                                            },
+                                            num: {
+                                                n: "2",
+                                                symbol: data[1].symbols,
+                                                text: data[1].articleText
+                                            },
+                                            num: {
+                                                n: "3",
+                                                symbol: data[2].symbols,
+                                                text: data[2].articleText
+                                            },
+                                            date: data[0].datetime
+                                        }
+                                    });
                             } catch (err) {
                                 console.error(err)
                             }
@@ -144,6 +164,6 @@ app.get('/scrape', (request, response) => {
             }
         }
     })
-    response.send(webscrapeTrimmed);
+    response.send(data);
 })
 exports.app = functions.https.onRequest(app);
