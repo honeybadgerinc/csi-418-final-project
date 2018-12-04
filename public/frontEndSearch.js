@@ -12,7 +12,6 @@ function scraper() {
            console.log('Error getting Scrape');
         }
     };
-
     Http.open("GET", url, true);
     Http.send();
 }
