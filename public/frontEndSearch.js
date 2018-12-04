@@ -5,12 +5,11 @@ window.onload = function () {
 
 function scraper() {
     const Http = new XMLHttpRequest();
-    const url='https://finalproject-37ce0.firebaseapp.com/scrape';
+    const url='/scrape';
     Http.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.status != 200) {
            // Typical action to be performed when the document is ready:
-           var data = JSON.parse(this.responseText);
-           console.log(data);
+           console.log('Error getting Scrape');
         }
     };
 

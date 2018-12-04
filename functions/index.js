@@ -20,7 +20,7 @@ if (!firebase_admin.apps.length) {
 else {
     firebase_admin.app();
 }
-var database = firebase_admin.database();
+//var database = firebase_admin.database();
 //This code will look for all articles on the nasdaq options front page with "Notable" or "Noteworthy" in the title
 
 app.get('/scrape', (request, response) => {
@@ -131,8 +131,8 @@ app.get('/scrape', (request, response) => {
 
                             try {
                                 const data = JSON.parse(webscrapeTrimmed);
-                                database.ref('Articles/').set(
-                                    {
+                                firebase_admin.database().ref('Articles/').set(
+                                    /*{
                                         tempHeadline: {
                                             num: {
                                                 n: "1",
@@ -151,7 +151,7 @@ app.get('/scrape', (request, response) => {
                                             },
                                             date: data[0].datetime
                                         }
-                                    });
+                                    }*/ data);
                             } catch (err) {
                                 console.error(err)
                             }
@@ -164,6 +164,5 @@ app.get('/scrape', (request, response) => {
             }
         }
     })
-    response.send(data);
 })
 exports.app = functions.https.onRequest(app);
