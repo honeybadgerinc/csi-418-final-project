@@ -130,7 +130,6 @@ app.get('/scrape', (request, response) => {
                             //    (err) => console.log('File successfully written!'))
 
                             try {
-                                const data = JSON.parse(webscrapeTrimmed);
                                 firebase_admin.database().ref('Articles/').set(
                                     /*{
                                         tempHeadline: {
@@ -151,7 +150,7 @@ app.get('/scrape', (request, response) => {
                                             },
                                             date: data[0].datetime
                                         }
-                                    }*/ data);
+                                    }*/ webscrapeTrimmed);
                             } catch (err) {
                                 console.error(err)
                             }
