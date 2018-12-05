@@ -68,6 +68,18 @@ app.get('/scrape', (request, response) => {
                             console.log("at line 65");
                             const html = response.data;
 
+                            //ANOTHA TEST
+                            var ref = db.ref("Main");
+                            try {
+                                ref.child("TESTaxios").set(
+                                    {
+                                        One: "TEST"
+                                    });
+                            }
+                            catch (err) {
+                                console.error("firebase write error: " + err);
+                            }
+
                             //Loads the html document into cheerio to start webscraping the data from
                             const $ = cheerio.load(html);
 
