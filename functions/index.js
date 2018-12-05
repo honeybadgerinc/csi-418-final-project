@@ -1,3 +1,5 @@
+import { database } from './node_modules/firebase-admin/lib/index';
+
 const axios = require('axios');
 const cheerio = require('cheerio');
 const firebase_admin = require('firebase-admin');
@@ -20,7 +22,7 @@ if (!firebase_admin.apps.length) {
 else {
     firebase_admin.app();
 }
-//var database = firebase_admin.database();
+var db = firebase_admin.database();
 //This code will look for all articles on the nasdaq options front page with "Notable" or "Noteworthy" in the title
 
 app.get('/scrape', (request, response) => {
@@ -117,7 +119,7 @@ app.get('/scrape', (request, response) => {
                             //Finally we populate the array with the data
                             for (var i = 0; i < 3; i++) {
                                 arrayFinal[i] = {
-                                    //headline: tempHeadline,
+                                    headline: tempHeadline,
                                     symbols: symbols[i],
                                     articleText: symbolText[i],
                                     datetime: datetime
@@ -125,29 +127,26 @@ app.get('/scrape', (request, response) => {
                             }
 
 
-                            //Here we trim down the array
-                            webscrapeTrimmed = arrayFinal.filter(n => n != undefined)
-
+                            var ref = db.ref("Main");
                             try {
-                                firebase_admin.database().ref(tempHeadline).set(
+                                ref.child(tempHeadline).set(
                                     {
-                                        tempHeadline: {
-                                            One: {
-                                                symbol: webscrapeTrimmed[0].symbols,
-                                                text: webscrapeTrimmed[0].articleText
-                                            },
-                                            Two: {
-                                                symbol: webscrapeTrimmed[1].symbols,
-                                                text: webscrapeTrimmed[1].articleText
-                                            },
-                                            Three: {
-                                                symbol: webscrapeTrimmed[2].symbols,
-                                                text: webscrapeTrimmed[2].articleText
-                                            },
-                                            date: webscrapeTrimmed[0].datetime
-                                        }
-                                    }
-                            } catch (err) {
+                                        One: {
+                                            symbol: arrayFinal[0].symbols,
+                                            text: arrayFinal[0].articleText
+                                        },
+                                        Two: {
+                                            symbol: arrayFinal[1].symbols,
+                                            text: arrayFinal[1].articleText
+                                        },
+                                        Three: {
+                                            symbol: arrayFinal[2].symbols,
+                                            text: arrayFinal[2].articleText
+                                        },
+                                        date: arrayFinal[0].datetime
+                                    });
+                            }
+                            catch (err) {
                                 console.error("firebase write error: " + err);
                             }
 
@@ -159,5 +158,6 @@ app.get('/scrape', (request, response) => {
             }
         }
     })
+    response.send('Scrape Completed Successfully!')
 })
 exports.app = functions.https.onRequest(app);
