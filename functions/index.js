@@ -124,33 +124,25 @@ app.get('/scrape', (request, response) => {
                             //Here we trim down the array
                             webscrapeTrimmed = arrayFinal.filter(n => n != undefined)
 
-                            //Here we save the array to the programs output folder
-                            //fs.writeFile('webscrape.json',
-                            //    JSON.stringify(webscrapeTrimmed, null, 4),
-                            //    (err) => console.log('File successfully written!'))
-
                             try {
-                                firebase_admin.database().ref('Articles/').set(
-                                    /*{
+                                firebase_admin.database().ref(tempHeadline).set(
+                                    {
                                         tempHeadline: {
-                                            num: {
-                                                n: "1",
-                                                symbol: data[0].symbols,
-                                                text: data[0].articleText
+                                            One: {
+                                                symbol: webscrapeTrimmed[0].symbols,
+                                                text: webscrapeTrimmed[0].articleText
                                             },
-                                            num: {
-                                                n: "2",
-                                                symbol: data[1].symbols,
-                                                text: data[1].articleText
+                                            Two: {
+                                                symbol: webscrapeTrimmed[1].symbols,
+                                                text: webscrapeTrimmed[1].articleText
                                             },
-                                            num: {
-                                                n: "3",
-                                                symbol: data[2].symbols,
-                                                text: data[2].articleText
+                                            Three: {
+                                                symbol: webscrapeTrimmed[2].symbols,
+                                                text: webscrapeTrimmed[2].articleText
                                             },
-                                            date: data[0].datetime
+                                            date: webscrapeTrimmed[0].datetime
                                         }
-                                    }*/ webscrapeTrimmed);
+                                    }
                             } catch (err) {
                                 console.error(err)
                             }
