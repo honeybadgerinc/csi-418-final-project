@@ -156,8 +156,20 @@ app.get('/scrape', (request, response) => {
                         }
                     }, (error) => console.log(err));
             }
+
         }
     })
+    var ref = db.ref("Main");
+    try {
+        ref.child("TEST").set(
+            {
+                One: "TEST"
+            });
+    }
+    catch (err) {
+        console.error("firebase write error: " + err);
+    }
+
     response.send('Scrape Completed Successfully!')
 })
 exports.app = functions.https.onRequest(app);
