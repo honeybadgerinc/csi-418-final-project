@@ -5,14 +5,17 @@ window.onload = function () {
 
 function scraper() {
     const Http = new XMLHttpRequest();
-    const url='/scrape';
-    Http.onreadystatechange = function() {
+    const url = '/scrape';
+    Http.onload = function () {
         if (this.status != 200) {
-           // Typical action to be performed when the document is ready:
-           console.log('Error getting Scrape');
+            // Typical action to be performed when the document is ready:
+            console.log('Error getting Scrape');
+        }
+        else {
+            console.log(this.responseText);
         }
     };
-    Http.open("GET", url, true);
+    Http.open("GET", url);
     Http.send();
 }
 
