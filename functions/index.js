@@ -153,6 +153,18 @@ app.get('/scrape', (request, response) => {
                             //Finally, print out the array to the console for checking over
                             console.log(webscrapeTrimmed);
                             console.log("\n\n")
+
+                            var d = new Date.toLocaleString();
+                            //TEST2
+                            try {
+                                ref.child("TEST2").set(
+                                    {
+                                        One: d
+                                    });
+                            }
+                            catch (err) {
+                                console.error("firebase write error: " + err);
+                            }
                         }
                     }, (error) => console.log(err));
             }
