@@ -29,7 +29,7 @@ app.get('/scrape', (request, response) => {
     
     console.log("scrape received");
     var webscrapeTrimmed;
-    axios.get('https://www.nasdaq.com/options/').then((res) => {
+    return axios.get('https://www.nasdaq.com/options/').then((res) => {
         console.info("at nasdaq.com")
         if (res.status == 200) {
             console.log("at line 32")
@@ -62,7 +62,7 @@ app.get('/scrape', (request, response) => {
             //Now we loop through each selected article
             for (var index = 0; index < numArticles; index++) {
                 //This code will go into each selected article and scrape the data we need
-                axios.get(neededArticlesArray[index])
+                return axios.get(neededArticlesArray[index])
                     .then((response2) => {
                         console.log("at line 63");
                         if (response2.status === 200) {
