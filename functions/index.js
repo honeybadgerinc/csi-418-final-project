@@ -1,4 +1,4 @@
-import { database } from './node_modules/firebase-admin/lib/index';
+//import { database } from './node_modules/firebase-admin/lib/index';
 
 const axios = require('axios');
 const cheerio = require('cheerio');
