@@ -27,7 +27,9 @@ app.get('/scrape', (request, response) => {
     console.log("scrape received");
     var webscrapeTrimmed;
     axios.get('https://www.nasdaq.com/options/').then((response) => {
+        console.info("at nasdaq.com")
         if (response.status == 200) {
+            console.log("at line 32")
             const html = response.data;
 
             //Loads html document into cheerio so we can look for articles we need
@@ -59,7 +61,9 @@ app.get('/scrape', (request, response) => {
                 //This code will go into each selected article and scrape the data we need
                 axios.get(neededArticlesArray[index])
                     .then((response) => {
+                        console.log("at line 63");
                         if (response.status === 200) {
+                            console.log("at line 65");
                             const html = response.data;
 
                             //Loads the html document into cheerio to start webscraping the data from
@@ -152,7 +156,7 @@ app.get('/scrape', (request, response) => {
                                         }
                                     }*/ webscrapeTrimmed);
                             } catch (err) {
-                                console.error(err)
+                                console.error("firebase write error: " + err);
                             }
 
                             //Finally, print out the array to the console for checking over
