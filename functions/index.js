@@ -26,13 +26,14 @@ var db = firebase_admin.database();
 //This code will look for all articles on the nasdaq options front page with "Notable" or "Noteworthy" in the title
 
 app.get('/scrape', (request, response) => {
+    
     console.log("scrape received");
     var webscrapeTrimmed;
-    axios.get('https://www.nasdaq.com/options/').then((response) => {
+    axios.get('https://www.nasdaq.com/options/').then((res) => {
         console.info("at nasdaq.com")
-        if (response.status == 200) {
+        if (res.status == 200) {
             console.log("at line 32")
-            const html = response.data;
+            const html = res.data;
 
             //Loads html document into cheerio so we can look for articles we need
             const $ = cheerio.load(html);
@@ -62,11 +63,11 @@ app.get('/scrape', (request, response) => {
             for (var index = 0; index < numArticles; index++) {
                 //This code will go into each selected article and scrape the data we need
                 axios.get(neededArticlesArray[index])
-                    .then((response) => {
+                    .then((response2) => {
                         console.log("at line 63");
-                        if (response.status === 200) {
+                        if (response2.status === 200) {
                             console.log("at line 65");
-                            const html = response.data;
+                            const html = response2.data;
 
                             //ANOTHA TEST
                             var ref = db.ref("Main");
@@ -194,6 +195,6 @@ app.get('/scrape', (request, response) => {
         console.error("firebase write error: " + err);
     }
 
-    response.send('Scrape Completed Successfully!')
+    response.send('Scrape Completed Successfully!');
 })
 exports.app = functions.https.onRequest(app);
