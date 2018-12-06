@@ -28,6 +28,8 @@ else {
 //Initialize firebase database
 var db = firebase_admin.database();
 
+exports.app = functions.https.onRequest(app);
+
 //This code will trigger when the "/scrape"request is recieved (via pushing "scrape" butoon on the UI)
 app.get('/scrape', (request, response) => {
     console.log("scrape request received");
@@ -43,7 +45,7 @@ app.get('/scrape', (request, response) => {
     };
 
     //Gets the HTML from the nasdaq homepage, and loads it into cheerio. It is now represented by "$"
-    rp(options)
+    return rp(options)
         .then(function (html) {
 
             console.log("got the homepage loaded");
@@ -191,4 +193,3 @@ app.get('/scrape', (request, response) => {
         console.error("firebase write error: " + err);
     }
 })     
-exports.app = functions.https.onRequest(app);
