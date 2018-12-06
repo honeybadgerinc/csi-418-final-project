@@ -176,6 +176,8 @@ app.get('/scrape', (request, response) => {
 
             //Sends a response back to the place that called it (UI)
             response.send('Scrape Completed Successfully!')
+
+            return;
         })
         .catch(function (err) {
             console.log(err.error);
