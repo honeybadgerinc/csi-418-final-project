@@ -13,12 +13,18 @@ const app = express();
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyA2pM55uTodnnX1wHcKBcYrQQByDSup-rU",
+    apiKey: "AIzaSyBHriCjR84InOYuyElyL7hMbyJ5qm-u_AA",
+    authDomain: "icsi418final.firebaseapp.com",
+    databaseURL: "https://icsi418final.firebaseio.com",
+    projectId: "icsi418final",
+    storageBucket: "icsi418final.appspot.com",
+    messagingSenderId: "97113985830"
+    /*apiKey: "AIzaSyA2pM55uTodnnX1wHcKBcYrQQByDSup-rU",
     authDomain: "finalproject-37ce0.firebaseapp.com",
     databaseURL: "https://finalproject-37ce0.firebaseio.com",
     projectId: "finalproject-37ce0",
     storageBucket: "finalproject-37ce0.appspot.com",
-    messagingSenderId: "260652345298"
+    messagingSenderId: "260652345298"*/
 };
 if (!firebase_admin.apps.length) {
     firebase_admin.initializeApp(config);
