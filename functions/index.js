@@ -38,7 +38,7 @@ const runtimeOpts = {
 exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
 
 //This code will trigger when the "/scrape"request is recieved (via pushing "scrape" butoon on the UI)
-app.get('/scrape', (request, response) => {
+app.get('/scrape', function(request, response) {
     console.log("scrape request received");
 
     //Gets the nasdaq homepage ready
@@ -52,8 +52,7 @@ app.get('/scrape', (request, response) => {
     };
 
     //Gets the HTML from the nasdaq homepage, and loads it into cheerio. It is now represented by "$"
-    return rp.get(options)
-        .then(function(html) {
+    rp(options, function(error, res, html) {
 
             console.log("got the homepage loaded");
 
@@ -94,8 +93,7 @@ app.get('/scrape', (request, response) => {
                     }
                 };
 
-                rp.get(options2)
-                    .then(function (html2) {
+                rp(options2, function(error, res, html2) {
                         //This will hold the initial array. Will later be used to create the final array that will be converted to json
                         const array = [];
 
