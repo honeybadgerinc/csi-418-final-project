@@ -6,6 +6,7 @@ const functions = require('firebase-functions');
 const r = require('request');
 const rp = require('request-promise');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 //require('request-promise').debug = true;
@@ -28,6 +29,7 @@ else {
 //Initialize firebase database
 var db = firebase_admin.database();
 
+app.use(cors({ origin: true }));
 
 const runtimeOpts = {
     timeoutSeconds: 300,
@@ -50,8 +52,8 @@ app.get('/scrape', (request, response) => {
     };
 
     //Gets the HTML from the nasdaq homepage, and loads it into cheerio. It is now represented by "$"
-    rp.get(options)
-        .then(function (html) {
+    return rp.get(options)
+        .then(function(html) {
 
             console.log("got the homepage loaded");
 
