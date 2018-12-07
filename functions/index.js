@@ -50,7 +50,7 @@ app.get('/scrape', (request, response) => {
     };
 
     //Gets the HTML from the nasdaq homepage, and loads it into cheerio. It is now represented by "$"
-    return rp(options)
+    rp.get(options)
         .then(function (html) {
 
             console.log("got the homepage loaded");
@@ -92,7 +92,7 @@ app.get('/scrape', (request, response) => {
                     }
                 };
 
-                rp(options2)
+                rp.get(options2)
                     .then(function (html2) {
                         //This will hold the initial array. Will later be used to create the final array that will be converted to json
                         const array = [];
@@ -176,6 +176,7 @@ app.get('/scrape', (request, response) => {
                     })
                     .catch(function(err) {
                         console.log(err.error);
+                        console.log(err);
                     });
             }
 
@@ -186,6 +187,7 @@ app.get('/scrape', (request, response) => {
         })
         .catch(function (err) {
             console.log(err.error);
+            console.log(err);
         });
 
     //A test to see if the database can be written to at all
