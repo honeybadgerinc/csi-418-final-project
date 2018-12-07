@@ -43,7 +43,7 @@ app.get('/scrape', function(request, response) {
 
     //Gets the nasdaq homepage ready
     const options = {
-        url: 'https://www.nasdaq.com/topic/options?page=5',
+        url: 'https://www.google.com/',
         headers: {
             'Connection': 'keep-alive',
             'Accept-Encoding': '',
