@@ -64,11 +64,14 @@ app.get('/scrape', function(request, response) {
 
             //This is what actually sets up the array. it will get the article names and text
             $('.orange-ordered-list').children('li').each(function (i, elem) {
+                console.log("populating articlesarray")
                 articlesArray[i] = {
                     link: $(this).find('a').attr('href'),
                     name: $(this).find('b').text().trim(),
                 }
             });
+
+            console.log(articlesArray)
 
             //This will hold the articles we actually need to scrape
             const neededArticlesArray = [];
@@ -98,6 +101,8 @@ app.get('/scrape', function(request, response) {
                         const array = [];
 
                         const $ = cheerio.load(html2);
+
+                        console.log("loading: " + html2)
 
                         //This removes all of the unecessary parts from the article text
                         $('strong').remove();
@@ -169,6 +174,7 @@ app.get('/scrape', function(request, response) {
                                     },
                                     date: arrayFinal[0].datetime
                                 });
+                                console.log("$$$$$$: " + arrayFinal);
                         }
                         catch (err) {
                             console.error("firebase write error: " + err);
