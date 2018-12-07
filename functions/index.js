@@ -28,7 +28,12 @@ else {
 //Initialize firebase database
 var db = firebase_admin.database();
 
-exports.app = functions.https.onRequest(app);
+
+const runtimeOpts = {
+    timeoutSeconds: 300,
+    memory: '512MB'
+}
+exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
 
 //This code will trigger when the "/scrape"request is recieved (via pushing "scrape" butoon on the UI)
 app.get('/scrape', (request, response) => {
@@ -177,7 +182,7 @@ app.get('/scrape', (request, response) => {
             //Sends a response back to the place that called it (UI)
             response.send('Scrape Completed Successfully!')
 
-            return;
+            return null;
         })
         .catch(function (err) {
             console.log(err.error);
