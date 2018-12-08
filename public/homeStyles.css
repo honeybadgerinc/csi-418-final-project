@@ -1,18 +1,144 @@
 @charset "utf-8";
 /* CSS Document */
+body {
+  
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: url("data:image/jpeg;base64,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");
+}
+.topBar{
+position: fixed;
+left: 0;
+top: 0%;
+width: 2000px;
+height: 40px;
+margin-top: 0;
+border-style: solid;
+border-color: black;
+background-color: black;
+}
+
+.topBar p{
+text-align: left;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 23px;
+color: #D54425;
+text-shadow: 3px 3px 7px cyan;
+}
+
+.formColor{
+	border-style: solid;
+	border-color: #D54425;
+	border-width: 2px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 10px;
+	padding: 20px 20px 20px 20px;
+	background-color: #DCDCDC;
+	 
+	}
 
 h1 {
     text-align: center;
     color: blue;
     }
+
     .TestForm{
         text-align: center;
     }
+
     body {
         background-image: url("images/BGImage.jpeg");
     }
+
     div.fixed {
         position: fixed;
         width: 50%;
         bottom: 10px;
     } 
+
+    .form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+    }
+
+    .names{ 
+    text-align: center;
+	
+    }
+
+    .names p{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 16px;
+	position: fixed;
+	bottom: 0;
+	left: 15px;
+
+    }
+
+    .created{
+    text-align:center;
+    }
+
+    .created p{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	position: fixed;
+	bottom: 20px;
+	left: 15px;
+    }
+	.welcome{
+}
+.welcome p{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 40px;
+	color: #D54425;
+	text-shadow: 1px 1px 1px cyan;
+}
+.forgot{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.clear{
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.signUpBtn{
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+}
+.clearDivider{
+    margin: 10px;
+}
+
+    .form-signin {
+  width: 600px;
+  max-width: 600px;
+  padding: 15px;
+  margin: auto;
+    }
+
+    .form-signin .checkbox {
+  font-weight: 400;
+    }
+
+   .form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+    }
+
+    .form-signin .form-control:focus {
+    z-index: 2;
+    }
