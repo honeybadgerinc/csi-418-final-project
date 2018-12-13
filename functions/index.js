@@ -8,23 +8,26 @@ const rp = require('request-promise');
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const slice = require('array-slice');
 
 //require('request-promise').debug = true;
 
 // Initialize Firebase
 var config = {
+    /*
     apiKey: "AIzaSyBHriCjR84InOYuyElyL7hMbyJ5qm-u_AA",
     authDomain: "icsi418final.firebaseapp.com",
     databaseURL: "https://icsi418final.firebaseio.com",
     projectId: "icsi418final",
     storageBucket: "icsi418final.appspot.com",
     messagingSenderId: "97113985830"
-    /*apiKey: "AIzaSyA2pM55uTodnnX1wHcKBcYrQQByDSup-rU",
+    */
+    apiKey: "AIzaSyA2pM55uTodnnX1wHcKBcYrQQByDSup-rU",
     authDomain: "finalproject-37ce0.firebaseapp.com",
     databaseURL: "https://finalproject-37ce0.firebaseio.com",
     projectId: "finalproject-37ce0",
     storageBucket: "finalproject-37ce0.appspot.com",
-    messagingSenderId: "260652345298"*/
+    messagingSenderId: "260652345298"
 };
 if (!firebase_admin.apps.length) {
     firebase_admin.initializeApp(config);
@@ -36,12 +39,54 @@ else {
 var db = firebase_admin.database();
 
 app.use(cors({ origin: true }));
+//app.use(express.urlencoded());
 
 const runtimeOpts = {
     timeoutSeconds: 300,
     memory: '512MB'
 }
 exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
+
+app.post("/symbol",function(request,response){
+    var query = db.ref("Main").orderByKey();
+    var result =[];
+
+    query.once("value").then(function(snapshot){ 
+        snapshot.forEach(function(childSnapshot){
+            if(childSnapshot.child('symbol').val() == request){
+                response.send(childSnapshot);
+            }
+        });
+    });
+
+})
+
+
+app.post("/date",function(request,response){
+    var  result=[];
+var index = 0;
+db.ref("Main").once("value",function(snap){
+    snap.forEach(function(childSnapshot){
+       // var key = childSnapshot.ref;
+       if(childSnapshot.hasChild("date") == true){
+        var date_time = childSnapshot.child("date").val();
+        //console.log("\n");
+        //console.log(index + " " + date + "\n");
+        
+        
+        var date = date_time.slice(0,9);
+       // console.log(date);
+        if(request == date){
+            response.send(childSnapshot);
+        }
+        else{
+            console.log("Child doesn't have date");
+        }
+    }
+       
+    })
+});
+})
 
 //This code will trigger when the "/scrape"request is recieved (via pushing "scrape" butoon on the UI)
 app.get('/scrape', function(request, response) {
@@ -202,15 +247,7 @@ app.get('/scrape', function(request, response) {
             console.log(err);
         });
 
-    //A test to see if the database can be written to at all
-    var ref = db.ref("Main");
-    try {
-        ref.child("TEST").set(
-            {
-                One: "TEST"
-            });
-    }
-    catch (err) {
-        console.error("firebase write error: " + err);
-    }
+   
 })     
+
+
