@@ -23,6 +23,8 @@ function scraper() {
 
 function Search() {
     //Get elements
+    const db = firebase.database();
+    const symbols = db.child('');
     
    
 }
