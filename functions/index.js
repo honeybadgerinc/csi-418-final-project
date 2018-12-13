@@ -47,7 +47,7 @@ const runtimeOpts = {
 }
 exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
 
-app.post("/symbol",function(request,response){
+/*app.post("/symbol",function(request,response){
     var query = db.ref("Main").orderByKey();
     var result =[];
 
@@ -64,29 +64,29 @@ app.post("/symbol",function(request,response){
 
 app.post("/date",function(request,response){
     var  result=[];
-var index = 0;
-db.ref("Main").once("value",function(snap){
-    snap.forEach(function(childSnapshot){
-       // var key = childSnapshot.ref;
-       if(childSnapshot.hasChild("date") == true){
-        var date_time = childSnapshot.child("date").val();
-        //console.log("\n");
-        //console.log(index + " " + date + "\n");
-        
-        
-        var date = date_time.slice(0,9);
-       // console.log(date);
-        if(request == date){
-            response.send(childSnapshot);
+    var index = 0;
+    db.ref("Main").once("value",function(snap){
+        snap.forEach(function(childSnapshot){
+        // var key = childSnapshot.ref;
+        if(childSnapshot.hasChild("date") == true){
+            var date_time = childSnapshot.child("date").val();
+            //console.log("\n");
+            //console.log(index + " " + date + "\n");
+            
+            
+            var date = date_time.slice(0,9);
+        // console.log(date);
+            if(request == date){
+                response.send(childSnapshot);
+            }
+            else{
+                console.log("Child doesn't have date");
+            }
         }
-        else{
-            console.log("Child doesn't have date");
-        }
-    }
-       
-    })
-});
-})
+        
+        })
+    });
+})*/
 
 //This code will trigger when the "/scrape"request is recieved (via pushing "scrape" butoon on the UI)
 app.get('/scrape', function(request, response) {

@@ -1,6 +1,8 @@
 window.onload = function () {
     document.getElementById('btnLogOut').addEventListener('click', signout, true);
-    document.getElementById('btnScrape').addEventListener('click', scraper, true);
+    document.getElementById('btnSearch').addEventListener('click', Search, true);
+    document.getElementById('btnSearchDate').addEventListener('click', SearchDate, true);
+    scraper();
 };
 
 function scraper() {
@@ -18,6 +20,18 @@ function scraper() {
     Http.open("GET", url);
     Http.send();
 }
+
+function Search() {
+    //Get elements
+    
+   
+}
+
+function SearchDate() {
+    //Get elements
+ 
+}
+
 
 function signout() {
     //Get elements
