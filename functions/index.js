@@ -14,20 +14,20 @@ const slice = require('array-slice');
 
 // Initialize Firebase
 var config = {
-    /*
     apiKey: "AIzaSyBHriCjR84InOYuyElyL7hMbyJ5qm-u_AA",
     authDomain: "icsi418final.firebaseapp.com",
     databaseURL: "https://icsi418final.firebaseio.com",
     projectId: "icsi418final",
     storageBucket: "icsi418final.appspot.com",
     messagingSenderId: "97113985830"
-    */
+    /*
     apiKey: "AIzaSyA2pM55uTodnnX1wHcKBcYrQQByDSup-rU",
     authDomain: "finalproject-37ce0.firebaseapp.com",
     databaseURL: "https://finalproject-37ce0.firebaseio.com",
     projectId: "finalproject-37ce0",
     storageBucket: "finalproject-37ce0.appspot.com",
     messagingSenderId: "260652345298"
+    */
 };
 if (!firebase_admin.apps.length) {
     firebase_admin.initializeApp(config);
@@ -98,7 +98,8 @@ app.get('/scrape', function(request, response) {
         headers: {
             'Connection': 'keep-alive',
             'Accept-Encoding': '',
-            'Accept-Language': 'en-US,en;q=0.8'
+            'Accept-Language': 'en-US,en;q=0.8',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'
         }
     };
 
