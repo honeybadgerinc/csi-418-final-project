@@ -1,11 +1,13 @@
 window.onload = function () {
     document.getElementById('btnLogOut').addEventListener('click', signout, true);
-    document.getElementById('btnScrape').addEventListener('click', scraper, true);
+   // document.getElementById('btnScrape').addEventListener('click', scraper, true);
+    document.getElementById("symbol_form").addEventListener('submit',symbolSearch,true);
+   // console.log("This is on load.\n\n\n");
 };
 
 function scraper() {
     const Http = new XMLHttpRequest();
-    const url = '/scrape';
+    const url = window.URL + '/scrape';
     Http.onload = function () {
         if (this.status != 200) {
             // Typical action to be performed when the document is ready:
@@ -18,6 +20,36 @@ function scraper() {
     Http.open("GET", url);
     Http.send();
 }
+
+function symbolSearch(){
+    console.log("Symbol search is called.\n");
+    Http = new XMLHttpRequest();
+    const url = window.URL+ "/symbol";
+   console.log("Loading.\n");
+    Http.onload = function(){
+        if(this.status != 200){
+            console.log('Error in symbol search.\n');
+        }
+        else {
+            console.log("Symbol search is running.\n");
+            console.log(this.responseText);
+        }
+    };
+
+    console.log("After onload.\n");
+    Http.send();
+
+    
+    
+}
+
+function dateSearch(){
+
+}
+
+
+
+
 
 function signout() {
     //Get elements

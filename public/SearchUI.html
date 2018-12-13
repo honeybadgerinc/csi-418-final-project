@@ -74,15 +74,9 @@
             </div>
         </div>
 
-        <form>
-            <div class="input-group">
-                <input class="form-control input-lg" id="inputlg" type="text" placeholder="Search by symbol">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                </div>
-            </div>
+        <form id="symbol_form"  method="GET">
+                <input class="form-control input-lg" id="inputlg" type="text" value="JNJ" name="symbol">
+                <input type="submit" value="Submit">
         </form>
         <br>
         <table class="table">
