@@ -6,9 +6,8 @@ const functions = require('firebase-functions');
 const r = require('request');
 const rp = require('request-promise');
 const express = require('express');
-const cors = require('cors');
 const app = express();
-const slice = require('array-slice');
+//const slice = require('array-slice');
 
 //require('request-promise').debug = true;
 
@@ -38,58 +37,55 @@ else {
 //Initialize firebase database
 var db = firebase_admin.database();
 
-app.use(cors({ origin: true }));
-//app.use(express.urlencoded());
-
 const runtimeOpts = {
     timeoutSeconds: 300,
     memory: '512MB'
 }
 exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
 
-app.post("/symbol",function(request,response){
-    var query = db.ref("Main").orderByKey();
-    var result =[];
+//app.post("/symbol",function(request,response){
+//    var query = db.ref("Main").orderByKey();
+//    var result =[];
 
-    query.once("value").then(function(snapshot){ 
-        snapshot.forEach(function(childSnapshot){
-            if(childSnapshot.child('symbol').val() == request){
-                response.send(childSnapshot);
-            }
-        });
-    });
+//    query.once("value").then(function(snapshot){ 
+//        snapshot.forEach(function(childSnapshot){
+//            if(childSnapshot.child('symbol').val() == request){
+//                response.send(childSnapshot);
+//            }
+//        });
+//    });
 
-})
+//})
 
 
-app.post("/date",function(request,response){
-    var  result=[];
-var index = 0;
-db.ref("Main").once("value",function(snap){
-    snap.forEach(function(childSnapshot){
-       // var key = childSnapshot.ref;
-       if(childSnapshot.hasChild("date") == true){
-        var date_time = childSnapshot.child("date").val();
-        //console.log("\n");
-        //console.log(index + " " + date + "\n");
+//app.post("/date",function(request,response){
+//    var  result=[];
+//var index = 0;
+//db.ref("Main").once("value",function(snap){
+//    snap.forEach(function(childSnapshot){
+//       // var key = childSnapshot.ref;
+//       if(childSnapshot.hasChild("date") == true){
+//        var date_time = childSnapshot.child("date").val();
+//        //console.log("\n");
+//        //console.log(index + " " + date + "\n");
         
         
-        var date = date_time.slice(0,9);
-       // console.log(date);
-        if(request == date){
-            response.send(childSnapshot);
-        }
-        else{
-            console.log("Child doesn't have date");
-        }
-    }
+//        var date = date_time.slice(0,9);
+//       // console.log(date);
+//        if(request == date){
+//            response.send(childSnapshot);
+//        }
+//        else{
+//            console.log("Child doesn't have date");
+//        }
+//    }
        
-    })
-});
-})
+//    })
+//});
+//})
 
 //This code will trigger when the "/scrape"request is recieved (via pushing "scrape" butoon on the UI)
-app.get('/scrape', function(request, response) {
+//app.get('/scrape', function(request, response) {
     console.log("scrape request received");
 
     //Gets the nasdaq homepage ready
@@ -249,6 +245,6 @@ app.get('/scrape', function(request, response) {
         });
 
    
-})     
+//})     
 
 
