@@ -41,10 +41,14 @@ function Search(requestedSymbol) {
 
         var i;
         var x = " ";
+        console.log(retObjects);
+
         for(i in retObjects){
-            x+= "<tr> <th scope=\"row\">" + retObjects[i].symbol + "/th>"
+            x+= "<tr> <th scope=\"row\">" + retObjects[i].symbol + "</th>"
                 + "<td>" + retObjects[i].text+ "</td>" + "</tr>"
         }
+
+        console.log(x);
 
         document.getElementById('DataTable').innerHTML = x;
 

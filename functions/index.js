@@ -332,15 +332,15 @@ app.get('/scrape', function(request, response) {
                         try {
                             ref.child(tempHeadline).set(
                                 {
-                                    One: {
+                                    1: {
                                         symbol: arrayFinal[0].symbols,
                                         text: arrayFinal[0].articleText
                                     },
-                                    Two: {
+                                    1: {
                                         symbol: arrayFinal[1].symbols,
                                         text: arrayFinal[1].articleText
                                     },
-                                    Three: {
+                                    3: {
                                         symbol: arrayFinal[2].symbols,
                                         text: arrayFinal[2].articleText
                                     },
