@@ -19,7 +19,6 @@ window.onload = function () {
   }
   
   function signIn() {
-
     console.log('In SignIn');
     //Get elements
     const txtEmail = document.getElementById('email');
@@ -31,13 +30,13 @@ window.onload = function () {
 
     const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.catch(e => alert(e.message));
-
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-
-      console.log('In AuthChanged');
-
-      if (firebaseUser) {
-        window.location.href = './SearchUI.html';
-      }
-    });
   };
+
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+
+    console.log('In AuthChanged');
+
+    if (firebaseUser) {
+      window.location.href = 'SearchUI.html';
+    }
+  });
