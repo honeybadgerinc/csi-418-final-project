@@ -183,7 +183,7 @@ function exportTableToCsv(filename) {
 }
 
 function printData() {
-    var divToPrint = document.getElementById("print");
+    var divToPrint = document.getElementById("DataTable");
     newWin = window.open("");
     newWin.document.write(divToPrint.outerHTML);
     newWin.print();
