@@ -23,24 +23,20 @@ function Scraper() {
     Http.send();
 }
 
-function Search() {
+function Search(requestedSymbol) {
     console.log('In Symbol');
 
     //Get elements
     const db = firebase.database();
-    var query = db.ref("Main").orderByKey();
-    //var result =[];
+    var query = db.ref("Main");
 
-    query.once("value").then(function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-            if (childSnapshot.child('symbol').val() == request) {
+    ref.once('value', function (snapshot) {
+        snapshot.forEach(function (userSnapshot) {
+            if (userSnapshot.val().symbol == requestedSymbol) {
                 console.log(childSnapshot);
             }
         });
     });
-
-
-
 }
 
 function SearchDate() {
