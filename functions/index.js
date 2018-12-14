@@ -336,7 +336,7 @@ app.get('/scrape', function(request, response) {
                                         symbol: arrayFinal[0].symbols,
                                         text: arrayFinal[0].articleText
                                     },
-                                    1: {
+                                    2: {
                                         symbol: arrayFinal[1].symbols,
                                         text: arrayFinal[1].articleText
                                     },
