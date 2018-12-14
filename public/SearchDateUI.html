@@ -17,6 +17,7 @@
     <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
     <script src="/__/firebase/5.7.0/firebase-app.js"></script>
     <script src="/__/firebase/5.7.0/firebase-auth.js"></script>
+    <script src="/__/firebase/5.7.0/firebase-database.js"></script>
     <script src="/__/firebase/init.js"></script>
 
     <!-- more bootstrap-->
@@ -77,7 +78,7 @@
         <div class="input-group">
             <input id="dateInput" type="text" name="input" placeholder="Search by date: YYYY-MM-DD" 
                     required pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])/(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])/(?:30))|(?:(?:0[13578]|1[02])-31))">
-            <button id="btnSearchDate" type="button" onclick="SearchDate()">Search</button>
+            <button id="btnSearchDate" type="button" onclick="SearchDate(document.getElementById('dateInput').value)">Search</button>
             <button id="btnScrape" type="button" onclick="Scraper()">Scrape</button>
         </div>
 
