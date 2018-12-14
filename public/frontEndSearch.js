@@ -37,6 +37,9 @@ function Search(requestedSymbol) {
             }
         });
         console.log("retObjects: " + JSON.stringify(retObjects));
+
+        
+
         return retObjects;
     });
 }
