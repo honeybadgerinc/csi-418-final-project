@@ -67,6 +67,7 @@ function SearchDate() {
     });
 
     var myObj, i, j, x = " ";
+
     myObj = {
         "name": "John",
         "age": 30,
