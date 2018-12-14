@@ -74,43 +74,43 @@
             </div>
         </div>
 
-        <form id="symbol_form"  method="GET">
-            <div class="input-group">
-                <input class="form-control input-lg" id="inputlg" type="text" placeholder="Search by symbol">
-                <input type="submit" value="Submit">
-            </div>
-        </form>
+        <div class="input-group">
+            <input class="form-control input-lg" id="inputlg" type="text" placeholder="Search by date">
+            <input type="submit" value="Submit">
+        </div>
+
         <br>
-        <table class="table">
+        <table id="DataTable" class="table">
             <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
             </thead>
+
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
             </tbody>
-          </table>
+        </table>
 
         <!-- Changed to selection instead of using labels-->
         <!--<p6>Please select either one:</p6>
@@ -172,7 +172,7 @@
             <button onclick="printData()" id="printtable"> PrintTable</button>
             </div>
         <div>-->
-            
+
         <div class="container">
             * - A stock symbol is an arrangement of characters (usually letters) representing a particular
             security listed on an exchange or otherwise traded publicly. Some common examples are AAPL for
