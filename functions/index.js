@@ -1,5 +1,5 @@
 //import { database } from './node_modules/firebase-admin/lib/index';
-
+"use strict";
 const cheerio = require('cheerio');
 const firebase_admin = require('firebase-admin');
 const functions = require('firebase-functions');
