@@ -1,14 +1,13 @@
 window.onload = function () {
     document.getElementById('btnLogOut').addEventListener('click', signout, true);
-    document.getElementById('btnSearch').addEventListener('click', Search, true);
+    /* document.getElementById('btnSearch').addEventListener('click', Search, true);
     document.getElementById('btnSearchDate').addEventListener('click', SearchDate, true);
-    document.getElementById('btnScrape').addEventListener('click', scraper, true);
+    document.getElementById('btnScrapest').addEventListener('click', Scraper, true); */
     //scraper();
 };
 
-function scraper() {
-    console.log('In Scrape');
-
+function Scraper() {
+    console.log('In Srape');
     const Http = new XMLHttpRequest();
     const url = 'https://us-central1-icsi418final.cloudfunctions.net/app/scrape';
     Http.onload = function () {
