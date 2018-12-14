@@ -112,70 +112,15 @@
             </tbody>
         </table>
 
-        <!-- Changed to selection instead of using labels-->
-        <!--<p6>Please select either one:</p6>
-        <select id="selection" onchange="myFunction()">
-            <option type="radio" value="empty"> </option>
-            <option type="radio" value="y">Symbol</option>
-            <option type="radio" value="z">Date</option>
-        </select>
-
-        <br><input type="text" name="symbol" id="symbol" style='visibility: hidden' placeholder="AAPL, MSFT, AMZN, etc.">
-        <input type="date" name="date" value="date" id="newdate" style='visibility: hidden' min="1950-01-01" max="2018-12-31">
-
-        <br>
-
-
-        <input type="text" name="symbol" pattern=[A-Za-z] placeholder="AAPL, MSFT, AMZN, etc.">
-        <br>
-        &nbsp;&nbsp;<button id="btnSearch" onmouseover="object1()">Search</button>
-
-        <button id="btnScrape" onclick="scraper()">Scrape</button>
-
-        <br>
-        <br>
-        &nbsp;&nbsp;<button onclick="">Clear</button>
-        </div>-->
-
-        <!--for now, this is a premade table to test. will add script to make talbe once done-->
-
-
-        <!--<table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Symbol</th>
-                    <th scope="col">Headline</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Text</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <!--Needs importation--
-                </tr>
-
-                <tr>
-                    <!--Needs importation--
-                </tr>
-
-                <tr>
-                    <!--Needs importation--
-                </tr>
-            </tbody>
-        </table>-->
-        <!-- all the breaks are because the div was not working correctly with export button-->
-
-        <button onclick="exportTableToCsv('tickerarticle.csv')" id="exp">Export to CSV</button>
-
-        <div class="fixed3">
-            <button onclick="printData()" id="printtable"> PrintTable</button>
-        </div>
         <div class="container">
+            <button onclick="exportTableToCsv('tickerarticle.csv')" id="exp">Export to CSV</button>
+            <button onclick="printData()" id="printtable"> PrintTable</button>
             * - A stock symbol is an arrangement of characters (usually letters) representing a particular
             security listed on an exchange or otherwise traded publicly. Some common examples are AAPL for
             Apple, GOOGL for
             Google and GE for General Electric.
         </div>
+
     </div>
     <script src="frontEndSearch.js"></script>
     <!------------------------------------>
