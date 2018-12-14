@@ -39,22 +39,15 @@ function Search(requestedSymbol) {
         });
         console.log("retObjects: " + JSON.stringify(retObjects));
 
-        
+        var i;
+        var x = " ";
+        for(i in retObjects){
+            x+= "<tr> <th scope=\"row\">" + retObjects[i].symbol + "/th>"
+                + "<td>" + retObjects[i].text+ "</td>" + "</tr>"
+        }
 
-        return retObjects;
-    });
-}
+        document.getElementById('DataTable').innerHTML = x;
 
-function SearchDate(requestedDate) {
-    var retObjects = [];
-    const ref = firebase.database().ref("Main");
-    ref.once('value', function (snapshot) {
-        snapshot.forEach(function (userSnapshot) {
-            if (requestedDate === userSnapshot.val().date) {
-                retObjects.push(userSnapshot.val());
-            }
-        });
-        console.log("retObjects: " + JSON.stringify(retObjects));
         return retObjects;
     });
 }
@@ -79,6 +72,22 @@ function SearchDate(requestedDate) {
 //     }
 //     document.getElementById("DataTable").innerHTML = x;
 // }
+
+function SearchDate(requestedDate) {
+    var retObjects = [];
+    const ref = firebase.database().ref("Main");
+    ref.once('value', function (snapshot) {
+        snapshot.forEach(function (userSnapshot) {
+            if (requestedDate === userSnapshot.val().date) {
+                retObjects.push(userSnapshot.val());
+            }
+        });
+        console.log("retObjects: " + JSON.stringify(retObjects));
+
+        
+        return retObjects;
+    });
+}
 
 
 function signout() {
@@ -107,22 +116,6 @@ function signout() {
     });
 }
 
-/* function myFunction() {
-
-            var x = document.getElementById("selection").value;
-            if (x == "y") {
-                document.getElementById('symbol').style.visibility = 'visible';
-                document.getElementById('newdate').style.visibility = 'hidden';
-            }
-            else if (x == "z") {
-                document.getElementById('newdate').style.visibility = 'visible';
-                document.getElementById('symbol').style.visibility = 'hidden';
-            }
-            else {
-                document.getElementById('symbol').style.visibility = 'hidden';
-                document.getElementById('newdate').style.visibility = 'hidden';
-            }
-        }*/
 
 function object1() {
     document.getElementById('exp').style.visibility = "visible";
