@@ -2,6 +2,7 @@ window.onload = function () {
     document.getElementById('btnLogOut').addEventListener('click', signout, true);
     document.getElementById('btnSearch').addEventListener('click', Search, true);
     document.getElementById('btnSearchDate').addEventListener('click', SearchDate, true);
+    document.getElementById('btnScrape').addEventListener('click', scraper, true);
     scraper();
 };
 
@@ -126,7 +127,7 @@ function signout() {
                 document.getElementById('symbol').style.visibility = 'hidden';
                 document.getElementById('newdate').style.visibility = 'hidden';
             }
-        }
+        }*/
 
 function object1() {
             document.getElementById('exp').style.visibility = "visible";
@@ -180,4 +181,4 @@ function printData() {
             newWin.document.write(divToPrint.outerHTML);
             newWin.print();
             newWin.close();
-        } */
+        } 
