@@ -5,6 +5,7 @@ const firebase_admin = require('firebase-admin');
 const functions = require('firebase-functions');
 const r = require('request');
 const rp = require('request-promise');
+const rp2 = require('request-promise');
 const express = require('express');
 const app = express();
 //const slice = require('array-slice');
@@ -19,14 +20,6 @@ var config = {
     projectId: "icsi418final",
     storageBucket: "icsi418final.appspot.com",
     messagingSenderId: "97113985830"
-    /*
-    apiKey: "AIzaSyA2pM55uTodnnX1wHcKBcYrQQByDSup-rU",
-    authDomain: "finalproject-37ce0.firebaseapp.com",
-    databaseURL: "https://finalproject-37ce0.firebaseio.com",
-    projectId: "finalproject-37ce0",
-    storageBucket: "finalproject-37ce0.appspot.com",
-    messagingSenderId: "260652345298"
-    */
 };
 if (!firebase_admin.apps.length) {
     firebase_admin.initializeApp(config);
@@ -85,7 +78,7 @@ exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
 //})
 
 //This code will trigger when the "/scrape"request is recieved (via pushing "scrape" butoon on the UI)
-//app.get('/scrape', function(request, response) {
+app.get('/scrape', function(request, response) {
     console.log("scrape request received");
 
     //Gets the nasdaq homepage ready
@@ -100,7 +93,7 @@ exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
     };
 
     //Gets the HTML from the nasdaq homepage, and loads it into cheerio. It is now represented by "$"
-    rp(options, function(error, res, html) {
+    rp(options, function(err, res, html) {
 
             console.log("got the homepage loaded");
 
@@ -112,14 +105,11 @@ exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
 
             //This is what actually sets up the array. it will get the article names and text
             $('.orange-ordered-list').children('li').each(function (i, elem) {
-                console.log("populating articlesarray")
                 articlesArray[i] = {
                     link: $(this).find('a').attr('href'),
                     name: $(this).find('b').text().trim(),
                 }
             });
-
-            console.log(articlesArray)
 
             //This will hold the articles we actually need to scrape
             const neededArticlesArray = [];
@@ -131,6 +121,8 @@ exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
 
             const numArticles = neededArticlesArray.length;
 
+            console.log(neededArticlesArray)
+
             //Now we loop through each selected article
             for (var index = 0; index < numArticles; index++) {
 
@@ -140,17 +132,18 @@ exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
                     headers: {
                         'Connection': 'keep-alive',
                         'Accept-Encoding': '',
-                        'Accept-Language': 'en-US,en;q=0.8'
+                        'Accept-Language': 'en-US,en;q=0.8',
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'
                     }
                 };
 
-                rp(options2, function(error, res, html2) {
+                rp2(options2, function(err2, res2, html2) {
                         //This will hold the initial array. Will later be used to create the final array that will be converted to json
                         const array = [];
 
                         const $ = cheerio.load(html2);
 
-                        console.log("loading: " + html2)
+                        console.log("Artcile Found");
 
                         //This removes all of the unecessary parts from the article text
                         $('strong').remove();
@@ -222,29 +215,24 @@ exports.app = functions.runWith(runtimeOpts).https.onRequest(app);
                                     },
                                     date: arrayFinal[0].datetime
                                 });
-                                console.log("$$$$$$: " + arrayFinal);
                         }
-                        catch (err) {
-                            console.error("firebase write error: " + err);
+                        catch (err0r) {
+                            console.error("firebase write error: " + error);
                         }
                     })
-                    .catch(function(err) {
-                        console.log(err.error);
-                        console.log(err);
+                    .catch(function(err2) {
+                        console.log(err2.error);
+                        console.log(err2);
                     });
             }
 
             //Sends a response back to the place that called it (UI)
             response.send('Scrape Completed Successfully!')
-
-            return null;
         })
         .catch(function (err) {
             console.log(err.error);
             console.log(err);
         });
-
-   
-//})     
+})     
 
 
