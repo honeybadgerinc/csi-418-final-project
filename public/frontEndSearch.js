@@ -1,8 +1,8 @@
 window.onload = function () {
     document.getElementById('btnLogOut').addEventListener('click', signout, true);
-    /* document.getElementById('btnSearch').addEventListener('click', Search, true);
+    // document.getElementById('btnSearch').addEventListener('click', Search, true);
     document.getElementById('btnSearchDate').addEventListener('click', SearchDate, true);
-    document.getElementById('btnScrapest').addEventListener('click', Scraper, true); */
+    document.getElementById('btnScrapest').addEventListener('click', Scraper, true);
     //scraper();
 };
 
@@ -24,7 +24,6 @@ function Scraper() {
 }
 
 function Search(requestedSymbol) {
-    console.log('In Symbol');
 
     var retObjects = [];
 
@@ -32,13 +31,17 @@ function Search(requestedSymbol) {
     const ref = firebase.database().ref("Main");
     ref.once('value', function (snapshot) {
         snapshot.forEach(function (userSnapshot) {
-            if (requestedSymbol == userSnapshot.val().symbol) {
-                retObjects.push(userSnapshot.val().symbol);
+            if (requestedSymbol === userSnapshot.val().One.symbol) {
+                retObjects.push(userSnapshot.val().One);
+            } else if (requestedSymbol === userSnapshot.val().Two.symbol) {
+                retObjects.push(userSnapshot.val().Two);
+            } else if (requestedSymbol === userSnapshot.val().Three.symbol) {
+                retObjects.push(userSnapshot.val().Three);
             }
         });
+        console.log("retObjects: " + JSON.stringify(retObjects));
+        return retObjects;
     });
-
-    return retObjects;
 }
 
 function SearchDate() {
