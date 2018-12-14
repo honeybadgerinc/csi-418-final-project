@@ -237,6 +237,8 @@ app.get('/scrape', function(request, response) {
             console.log(err.error);
             console.log(err);
         });
-})     
+}) 
+
+console.log('BTNTEST!!!!!!!!!');
 
 
