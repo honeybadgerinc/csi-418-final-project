@@ -23,29 +23,37 @@ function Scraper() {
     Http.send();
 }
 
-function Search(requestedSymbol) {
+function Search() {
     console.log('In Symbol');
 
-    var retObjects = [];
-
     //Get elements
-    const ref = firebase.database().ref("Main");
-    ref.once('value', function (snapshot) {
-        snapshot.forEach(function (userSnapshot) {
-            if (requestedSymbol == userSnapshot.val().symbol) {
-                retObjects.push(userSnapshot.val().symbol);
+    const db = firebase.database();
+    var query = db.ref("Main").orderByKey();
+    //var result =[];
+
+    query.once("value").then(function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            if (childSnapshot.child('symbol').val() == request) {
+                console.log(childSnapshot);
             }
         });
     });
 
-    return retObjects;
+
+
 }
 
 function SearchDate() {
     //Get elements
     console.log('In Date');
 
-    var result = [];
+    const daty = document.getElementById('dateInput');
+
+    var dbRef = firebase.database().ref('Main');
+    dbRef.orderByChild('date').equalTo(daty).on('child_added', function(snap) {
+        console.log(snap.val());
+    });
+   /*  var result = [];
     var index = 0;
     db.ref("Main").once("value", function (snap) {
         snap.forEach(function (childSnapshot) {
@@ -62,7 +70,7 @@ function SearchDate() {
             }
 
         })
-    });
+    }); */
 
     var myObj, i, j, x = " ";
 

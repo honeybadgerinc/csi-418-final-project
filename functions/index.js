@@ -189,7 +189,7 @@ app.get('/scrape', function(request, response) {
                         tempIndex2 = tempText.indexOf("orange:") + 7;
                         symbolText[2] = tempText.substring(tempIndex, tempIndex2);
                         //The datetime of the webscrape
-                        var datetime = new Date().toLocaleString();
+                        var datetime = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate()).toString();
                         //Finally we populate the array with the data
                         for (var i = 0; i < 3; i++) {
                             arrayFinal[i] = {
