@@ -21,12 +21,16 @@ var config = {
     storageBucket: "icsi418final.appspot.com",
     messagingSenderId: "97113985830"
 };
+
+
 if (!firebase_admin.apps.length) {
     firebase_admin.initializeApp(config);
 }
 else {
     firebase_admin.app();
 }
+
+
 //Initialize firebase database
 var db = firebase_admin.database();
 
