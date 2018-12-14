@@ -20,14 +20,10 @@ window.onload = function () {
   
   function signIn() {
 
+    console.log('In SignIn');
     //Get elements
     const txtEmail = document.getElementById('email');
     const txtPass = document.getElementById('password');
-    const btnSignIn = document.getElementById('btnSignIn');
-    const btnSignUp = document.getElementById('btnSignUp');
-
-    console.log('In SignIn');
-
     //Get Email and Pass
     const email = txtEmail.value;
     const pass = txtPass.value;

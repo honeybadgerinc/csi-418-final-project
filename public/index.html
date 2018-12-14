@@ -1,79 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
-	
-	 <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="homeStyles.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
   <!--Connects to firebase-->
-  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
   <!-- Import and configure the Firebase SDK -->
   <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
   <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
-  <script src="/__/firebase/5.6.0/firebase-app.js"></script>
-  <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
+  <script src="/__/firebase/5.7.0/firebase-app.js"></script>
+  <script src="/__/firebase/5.7.0/firebase-auth.js"></script>
   <script src="/__/firebase/init.js"></script>
 </head>
 
- <body class="text-center">
-	
-	<div class="topBar">
-	<p> <i><b>Jumping Jack Jacks</b></i></p>
-	</div>
-  <form class="form-signin">
-    <div class="welcome">
-	  <p > Welcome! </p>
-	  </div>
-    <br><br><br>
-	  <div class = "formColor">
-      <h1 class="h3 mb-3 font-weight-normal" font="Lucida Sans Unicode">Please sign in below</h1>
-	  <br>
-    <br>
-    <br>
-    <!--Needs to be fixed for logins wanted, dont know what we want the fixed logins to be as a team-->
-	
-	
-	<label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="email" class="form-control" placeholder="Email address" name="Email" required autofocus>
-	  <br>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="password" class="form-control" placeholder="Password" name="Password" required>
-	  <br>
+<body>
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign In</h5>
+            <div class="form-label-group">
+              <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+            </div>
 
-	<div class="checkbox mb-3">
-        <label>
-          <button class="forgot" value="remember-me"> Forgot Password?</button>
-		  
-        </label>
-		
+            <br>
+
+            <div class="form-label-group">
+              <input type="password" id="password" class="form-control" placeholder="Password" required>
+            </div>
+            <br><br>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btnSignIn">Sign in</button>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btnSignUp">I'm new sign Up</button>
+            <hr class="my-4">
+        </div>
       </div>
-	  <button class="clear" onclick="document.getElementById('email' 'password').value = ''"> Clear</button>
-	  &nbsp;&nbsp;<button class="signUpBtn" id="btnSignUp">Sign Up</button>
-	  <div class="clearDivider"></div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" id="btnSignIn">Sign in</button>
-	  </div>
-	  
-      
-   <div class="created">
-	  <p>Created By:</p>
-	  </div>
-	  <div class="names">
-	  <p><u>Joseph Miklos, Brittany Abrahams, Lucas Henry, Malcolm James, Cameron Casanova & Kiana Pugh</u></p>
-	  </div>
-
+    </div>
+  </div>
   <script src="frontEnd.js"></script>
-</form>
 </body>
 
 </html>
