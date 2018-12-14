@@ -3,7 +3,7 @@ window.onload = function () {
     document.getElementById('btnSearch').addEventListener('click', Search, true);
     document.getElementById('btnSearchDate').addEventListener('click', SearchDate, true);
     document.getElementById('btnScrape').addEventListener('click', scraper, true);
-    scraper();
+    //scraper();
 };
 
 function scraper() {
@@ -130,55 +130,55 @@ function signout() {
         }*/
 
 function object1() {
-            document.getElementById('exp').style.visibility = "visible";
-            document.getElementById('printtable').style.visibility = "visible";
-        }
+    document.getElementById('exp').style.visibility = "visible";
+    document.getElementById('printtable').style.visibility = "visible";
+}
 
 function downloadCsv(csv, filename) {
-            var csvFile;
-            var downloadLink;
+    var csvFile;
+    var downloadLink;
 
-            csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob([csv], { type: "text/csv" });
 
-            // download link for file
-            downloadLink = document.createElement("a");
+    // download link for file
+    downloadLink = document.createElement("a");
 
-            //filename
-            downloadLink.download = filename;
+    //filename
+    downloadLink.download = filename;
 
-            // link to file
-            downloadLink.href = window.URL.createObjectURL(csvFile);
+    // link to file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
 
-            // making sure link is not displayed
-            downloadLink.style.display = "none";
+    // making sure link is not displayed
+    downloadLink.style.display = "none";
 
-            //linking to download/body
-            document.body.appendChild(downloadLink);
+    //linking to download/body
+    document.body.appendChild(downloadLink);
 
-            //onclick
-            downloadLink.click();
-        }
+    //onclick
+    downloadLink.click();
+}
 
 function exportTableToCsv(filename) {
-            var csv = [];
-            var rows = document.querySelectorAll("table tr");
+    var csv = [];
+    var rows = document.querySelectorAll("table tr");
 
-            for (var i = 0; i < rows.length; i++) {
-                var row = [], cols = rows[i].querySelectorAll("td, th");
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
 
-                for (var j = 0; j < cols.length; j++)
-                    row.push(cols[j].innerText);
+        for (var j = 0; j < cols.length; j++)
+            row.push(cols[j].innerText);
 
-                csv.push(row.join(","));
-            }
-            //downloads the csv file
-            downloadCsv(csv.join("\n"), filename);
-        }
+        csv.push(row.join(","));
+    }
+    //downloads the csv file
+    downloadCsv(csv.join("\n"), filename);
+}
 
 function printData() {
-            var divToPrint = document.getElementById("print");
-            newWin = window.open("");
-            newWin.document.write(divToPrint.outerHTML);
-            newWin.print();
-            newWin.close();
-        } 
+    var divToPrint = document.getElementById("print");
+    newWin = window.open("");
+    newWin.document.write(divToPrint.outerHTML);
+    newWin.print();
+    newWin.close();
+} 
