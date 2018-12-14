@@ -25,6 +25,7 @@ function Scraper() {
 
 function Search(requestedSymbol) {
     //Get elements
+    var retObjects = [];
     const ref = firebase.database().ref("Main");
     ref.once('value', function (snapshot) {
         snapshot.forEach(function (userSnapshot) {
@@ -44,55 +45,40 @@ function Search(requestedSymbol) {
     });
 }
 
-function SearchDate() {
-    //Get elements
-    console.log('In Date');
-
-    const daty = document.getElementById('dateInput');
-
-    var dbRef = firebase.database().ref('Main');
-    dbRef.orderByChild('date').equalTo(daty).on('child_added', function(snap) {
-        console.log(snap.val());
-    });
-   /*  var result = [];
-    var index = 0;
-    db.ref("Main").once("value", function (snap) {
-        snap.forEach(function (childSnapshot) {
-            // var key = childSnapshot.ref;
-            if (childSnapshot.hasChild("date") == true) {
-                var date_time = childSnapshot.child("date").val();
-                //console.log("\n");
-                //console.log(index + " " + date + "\n");
-                if (request == date) {
-                    response.send(childSnapshot);
-                } else {
-                    console.log("Child doesn't have date");
-                }
+function SearchDate(requestedDate) {
+    var retObjects = [];
+    const ref = firebase.database().ref("Main");
+    ref.once('value', function (snapshot) {
+        snapshot.forEach(function (userSnapshot) {
+            if (requestedDate === userSnapshot.val().date) {
+                retObjects.push(userSnapshot.val());
             }
-
-        })
-    }); */
-
-    var myObj, i, j, x = " ";
-
-    myObj = {
-        "name": "John",
-        "age": 30,
-        "cars": [
-            { "name": "Ford", "models": ["Fiesta", "Focus", "Mustang"] },
-            { "name": "BMW", "models": ["320", "X3", "X5"] },
-            { "name": "Fiat", "models": ["500", "Panda"] }
-        ]
-    }
-
-    for (i in myObj.cars) {
-        x += "<h2>" + myObj.cars[i].name + "</h2>";
-        for (j in myObj.cars[i].models) {
-            x += myObj.cars[i].models[j] + "<br>";
-        }
-    }
-    document.getElementById("DataTable").innerHTML = x;
+        });
+        console.log("retObjects: " + JSON.stringify(retObjects));
+        return retObjects;
+    });
 }
+
+//     var myObj, i, j, x = " ";
+
+//     myObj = {
+//         "name": "John",
+//         "age": 30,
+//         "cars": [
+//             { "name": "Ford", "models": ["Fiesta", "Focus", "Mustang"] },
+//             { "name": "BMW", "models": ["320", "X3", "X5"] },
+//             { "name": "Fiat", "models": ["500", "Panda"] }
+//         ]
+//     }
+
+//     for (i in myObj.cars) {
+//         x += "<h2>" + myObj.cars[i].name + "</h2>";
+//         for (j in myObj.cars[i].models) {
+//             x += myObj.cars[i].models[j] + "<br>";
+//         }
+//     }
+//     document.getElementById("DataTable").innerHTML = x;
+// }
 
 
 function signout() {
@@ -185,7 +171,7 @@ function exportTableToCsv(filename) {
 }
 
 function printData() {
-    var divToPrint = document.getElementById("print");
+    var divToPrint = document.getElementById("DataTable");
     newWin = window.open("");
     newWin.document.write(divToPrint.outerHTML);
     newWin.print();
