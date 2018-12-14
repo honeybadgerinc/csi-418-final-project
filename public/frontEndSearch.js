@@ -25,6 +25,7 @@ function Scraper() {
 
 function Search(requestedSymbol) {
     //Get elements
+    var retObjects = [];
     const ref = firebase.database().ref("Main");
     ref.once('value', function (snapshot) {
         snapshot.forEach(function (userSnapshot) {
