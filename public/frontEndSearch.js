@@ -7,8 +7,10 @@ window.onload = function () {
 };
 
 function scraper() {
+    console.log('In Scrape');
+    
     const Http = new XMLHttpRequest();
-    const url = '/scrape';
+    const url = 'https://us-central1-icsi418final.cloudfunctions.net/app/scrape';
     Http.onload = function () {
         if (this.status != 200) {
             // Typical action to be performed when the document is ready:
