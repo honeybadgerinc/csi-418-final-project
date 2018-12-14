@@ -26,17 +26,19 @@ function Scraper() {
 function Search(requestedSymbol) {
     console.log('In Symbol');
 
-    //Get elements
-    const db = firebase.database();
-    var query = db.ref("Main");
+    var retObjects = [];
 
+    //Get elements
+    const ref = firebase.database().ref("Main");
     ref.once('value', function (snapshot) {
         snapshot.forEach(function (userSnapshot) {
-            if (userSnapshot.val().symbol == requestedSymbol) {
-                console.log(childSnapshot);
+            if (requestedSymbol == userSnapshot.val().symbol) {
+                retObjects.push(userSnapshot.val().symbol);
             }
         });
     });
+
+    return retObjects;
 }
 
 function SearchDate() {
