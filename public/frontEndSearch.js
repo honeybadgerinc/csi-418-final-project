@@ -69,13 +69,15 @@ function SearchDate(requestedDate) {
         var i;
         var x = " ";
 
+        console.log(retObjects[0]);
+
         for(i in retObjects){
             x+= "<tr> <th scope=\"row\">" + retObjects[i].One.symbol + "</th>"
-                + "<td>" + retObjects[i].One.text+ "</td>" + "</tr>";
-            x+= "<tr> <th scope=\"row\">" + retObjects[i].Two.symbol + "</th>"
-                + "<td>" + retObjects[i].Two.text+ "</td>" + "</tr>";
-            x+= "<tr> <th scope=\"row\">" + retObjects[i].Three.symbol + "</th>"
-                + "<td>" + retObjects[i].Three.text+ "</td>" + "</tr>";
+                + "<td>" + retObjects[i].One.text+ "</td>" + "</tr>"+
+                "<tr> <th scope=\"row\">" + retObjects[i].Two.symbol + "</th>"
+                + "<td>" + retObjects[i].Two.text+ "</td>" + "</tr>"
+                +"<tr> <th scope=\"row\">" + retObjects[i].Three.symbol + "</th>"
+                + "<td>" + retObjects[i].Three.text+ "</td>" + "</tr>"
         }
 
         console.log(x);
