@@ -44,7 +44,7 @@ function Search(requestedSymbol) {
 
         for(i in retObjects){
             x+= "<tr> <th scope=\"row\">" + retObjects[i].symbol + "</th>"
-                + "<td>" + retObjects[i].text+ "</td>" + "</tr>"
+                + "<td>" + retObjects[i].text+ "</td>" + "</tr>";
         }
 
         console.log(x);
@@ -70,8 +70,12 @@ function SearchDate(requestedDate) {
         var x = " ";
 
         for(i in retObjects){
-            x+= "<tr> <th scope=\"row\">" + retObjects[i].symbol + "</th>"
-                + "<td>" + retObjects[i].text+ "</td>" + "</tr>"
+            x+= "<tr> <th scope=\"row\">" + retObjects[i].One.symbol + "</th>"
+                + "<td>" + retObjects[i].One.text+ "</td>" + "</tr>";
+            x+= "<tr> <th scope=\"row\">" + retObjects[i].Two.symbol + "</th>"
+                + "<td>" + retObjects[i].Two.text+ "</td>" + "</tr>";
+            x+= "<tr> <th scope=\"row\">" + retObjects[i].Three.symbol + "</th>"
+                + "<td>" + retObjects[i].Three.text+ "</td>" + "</tr>";
         }
 
         console.log(x);
