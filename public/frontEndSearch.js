@@ -41,7 +41,6 @@ function Search(requestedSymbol) {
 
         var i;
         var x = " ";
-        console.log(retObjects);
 
         for(i in retObjects){
             x+= "<tr> <th scope=\"row\">" + retObjects[i].symbol + "</th>"
@@ -56,27 +55,6 @@ function Search(requestedSymbol) {
     });
 }
 
-//     var myObj, i, j, x = " ";
-
-//     myObj = {
-//         "name": "John",
-//         "age": 30,
-//         "cars": [
-//             { "name": "Ford", "models": ["Fiesta", "Focus", "Mustang"] },
-//             { "name": "BMW", "models": ["320", "X3", "X5"] },
-//             { "name": "Fiat", "models": ["500", "Panda"] }
-//         ]
-//     }
-
-//     for (i in myObj.cars) {
-//         x += "<h2>" + myObj.cars[i].name + "</h2>";
-//         for (j in myObj.cars[i].models) {
-//             x += myObj.cars[i].models[j] + "<br>";
-//         }
-//     }
-//     document.getElementById("DataTable").innerHTML = x;
-// }
-
 function SearchDate(requestedDate) {
     var retObjects = [];
     const ref = firebase.database().ref("Main");
@@ -88,6 +66,17 @@ function SearchDate(requestedDate) {
         });
         console.log("retObjects: " + JSON.stringify(retObjects));
 
+        var i;
+        var x = " ";
+
+        for(i in retObjects){
+            x+= "<tr> <th scope=\"row\">" + retObjects[i].symbol + "</th>"
+                + "<td>" + retObjects[i].text+ "</td>" + "</tr>"
+        }
+
+        console.log(x);
+
+        document.getElementById('DataTable').innerHTML = x;
         
         return retObjects;
     });
